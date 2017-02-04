@@ -30,9 +30,13 @@ public class DriveSubsystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new DriveCommand());
     }
-    //figure out how to get arcadeDrive to work
+    
     public void ArcadeDrive(){
-    	drive.arcadeDrive(OI.stick.getX(), OI.stick.getY());;
+    	drive.arcadeDrive(OI.y, OI.nx);; //this is what does arcade drive
+    }
+    
+    public void TankDrive(){
+    	drive.tankDrive(OI.y, OI.stick2.getY());
     }
     
     public void AutonomousDrive (double speedl, double time){
