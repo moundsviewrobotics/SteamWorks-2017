@@ -49,3 +49,6 @@ Temporary Items
 # Eclipse project files
 .classpath
 /bin/
+/build/
+/dist/
+

@@ -21,9 +21,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	
 	public static OI oi;
 	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
+	
+	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.1";
+	private static final String SOFTWARE_DATE = "DATE(02/04/17)";
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -35,9 +37,9 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         chooser = new SendableChooser();
-        
-        
         SmartDashboard.putData("Auto mode", chooser);
+        SmartDashboard.putString("DB/String 0", SOFTWARE_VERSION);
+        SmartDashboard.putString("DB/String 5", SOFTWARE_DATE);
     }
 	
 	/**

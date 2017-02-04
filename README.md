@@ -6,7 +6,9 @@ This project contains the code for an FRC  command based FRC robot control progr
 
 ### Features ###
 
-This program has basic arcade drive.
+- This program has basic arcade drive.  
+- Display software version and date.
+
 
 ### Deploy ###
 
@@ -25,6 +27,6 @@ If this fails, ensure mDNS is running.
 
 ### Driver Information ###
 
-Single joystick supports forward, backward, left, and right.
+Software version and date is displayed on PC Dashboard Basic tab. Single joystick supports forward, backward, left, and right.
 
 ### Known Issues ###
