@@ -20,7 +20,7 @@ public class DriveSubsystem extends Subsystem {
     // here. Call these from Commands.
 	private RobotDrive drive;
 	public DriveSubsystem() {
-		drive = new RobotDrive(0, 1);
+		drive = new RobotDrive(0, 1, 2, 3);
 		drive.setSafetyEnabled(false);
 		drive.setSensitivity(0.75);
 	}

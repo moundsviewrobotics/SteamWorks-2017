@@ -48,5 +48,7 @@ Temporary Items
 
 # Java project files and build artifacts
 .classpath
-.project
 /bin/
+/build/
+/dist/
+
