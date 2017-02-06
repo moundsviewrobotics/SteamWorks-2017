@@ -25,9 +25,9 @@ public class OI {
 	public static boolean isArcade = true;
 	public static boolean JBBIsHeld = false;
 	public static boolean JBCIsHeld = false;
-	public static JoystickButton JBA = new JoystickButton(stick, 0);
-	public static Button JBB = new JoystickButton(stick, 1);
-	public static Button JBC = new JoystickButton(stick, 2);
+	public static JoystickButton JBA = new JoystickButton(stick, 1);
+	public static Button JBB = new JoystickButton(stick, 2);
+	public static Button JBC = new JoystickButton(stick, 3);
 
 	public static Joystick getInstance() {
 		// TODO Auto-generated method stub
@@ -56,13 +56,13 @@ public class OI {
     // the button is released.
     // button.whileHeld(new ExampleCommand());
 	
-	static {
+    {
 		JBA.whileHeld(new checkButtons());
-		JBB.whileHeld(new JoystickButtonBHeld());
+		JBB.whenPressed(new JoystickButtonBHeld());
 		JBB.whenReleased(new JoystickButtonBRelease());
-		JBC.whileHeld(new JoystickButtonCHeld());
+		JBC.whenPressed(new JoystickButtonCHeld());
 		JBC.whenReleased(new JoystickButtonCRelease());
-	}
+    }
 	
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.

@@ -20,12 +20,13 @@ public class checkButtons extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(OI.JBBIsHeld == true){
+    	if(OI.JBBIsHeld == true && OI.JBCIsHeld == false){
     		OI.toArcade();
-    		
+    		System.out.println("arcade mode");
     	}
-    	else if (OI.JBCIsHeld == true){
+    	if (OI.JBCIsHeld == true && OI.JBBIsHeld == false){
     		OI.toTank();
+    		System.out.println("tank mode");
     	}
     	SmartDashboard.putBoolean("DB/LED 0", OI.isArcade);
     }

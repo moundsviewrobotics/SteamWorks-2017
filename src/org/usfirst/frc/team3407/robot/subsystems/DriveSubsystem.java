@@ -20,7 +20,7 @@ public class DriveSubsystem extends Subsystem {
     // here. Call these from Commands.
 	private RobotDrive drive;
 	public DriveSubsystem() {
-		drive = new RobotDrive(0, 1);
+		drive = new RobotDrive(0, 1, 2, 3);
 		drive.setSafetyEnabled(false);
 		drive.setSensitivity(0.75);
 	}
@@ -32,11 +32,11 @@ public class DriveSubsystem extends Subsystem {
     }
     
     public void ArcadeDrive(){
-    	drive.arcadeDrive(OI.y, OI.nx);; //this is what does arcade drive
+    	drive.arcadeDrive(OI.stick.getY(), - OI.stick.getX());; //this is what does arcade drive
     }
     
     public void TankDrive(){
-    	drive.tankDrive(OI.y, OI.stick2.getY());
+    	drive.tankDrive(OI.stick.getY(), OI.stick2.getY());
     }
     
     public void AutonomousDrive (double speedl, double time){

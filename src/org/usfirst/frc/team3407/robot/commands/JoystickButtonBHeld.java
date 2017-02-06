@@ -20,6 +20,7 @@ public class JoystickButtonBHeld extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	OI.JBBIsHeld = true;
+    	System.out.println("Joystick Button B is being held");
     	
     }
 
