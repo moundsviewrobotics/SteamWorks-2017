@@ -28,7 +28,12 @@ public class DriveCommand extends Command {
     		Robot.driveSubsystem.ArcadeDrive();
     	}
     	else if(OI.isArcade == false){
-    		Robot.driveSubsystem.TankDrive();
+            if(OI.tankIsSlow == false){
+    		    Robot.driveSubsystem.TankDrive();
+            }
+            else if(OI.tankIsSlow == true){
+                Robot.driveSubsystem.SlowTank();
+            }
     	}
     }
 
