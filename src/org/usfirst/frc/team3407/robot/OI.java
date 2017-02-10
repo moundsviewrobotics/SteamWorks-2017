@@ -23,8 +23,10 @@ public class OI {
 	public static double y = stick.getY();
 	public static double nx = -x;
 	public static boolean isArcade = true;
+	public static boolean tankIsSlow = false;
 	public static boolean JBBIsHeld = false;
 	public static boolean JBCIsHeld = false;
+	public static boolean JTBIsHeld = false;
 	public static JoystickButton JBA = new JoystickButton(stick, 1); // creates joystick button A on stick 1
 	public static Button JBB = new JoystickButton(stick, 2); //creates joystick button B on stick 1
 	public static Button JBC = new JoystickButton(stick, 3); //creates joystick button C on stick 1
