@@ -39,6 +39,10 @@ public class DriveSubsystem extends Subsystem {
     	drive.tankDrive(OI.stick.getY(), OI.stick2.getY());
     }
     
+    public void SlowTank(){
+	drive.tankDrive(OI.stick.getY()/3 + OI.stick.getY * (OI.stick.getX()**2) * 2 / 3, OI.stick2.getY()/3 + OI.stick2.getY * (OI.stick2.getX()**2) * 2 / 3
+    }
+    
     public void AutonomousDrive (double speedl, double time){
     	drive.drive(speedl, 0);
     	Timer.delay(time);
