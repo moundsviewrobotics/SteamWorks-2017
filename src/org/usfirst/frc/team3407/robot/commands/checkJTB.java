@@ -20,14 +20,16 @@ public class checkJTB extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(OI.JTBIsHeld == true && OI.IsArcade == false){
+    	if(OI.JTBIsHeld == true && OI.tankIsSlow == false){
     		OI.tankIsSlow = true;
     		System.out.println("slow tank mode");
+            OI.JTBIsHeld = false;
     	}
-      else if(OI.JTBIsHeld == true && OI.isArcade == true){
-        OI.tankIsSlow = false;
-        System.out.println("normal tank mode");
-      }
+        else if(OI.JTBIsHeld == true && OI.tankIsSlow == true){
+            OI.tankIsSlow = false;
+            System.out.println("normal tank mode");
+            OI.JTBIsHeld = false;
+        }
     	
     	SmartDashboard.putBoolean("DB/LED 3", OI.tankIsSlow);
     }
