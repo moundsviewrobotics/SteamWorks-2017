@@ -63,15 +63,15 @@ public class OI {
     {
 		JBA.whileHeld(new checkButtons()); //checks if the buttons for changing the drive system are being held and changes it if so
 	        
-	        JTA.whileHeld(new checkJTB()); //checks if the button for changing the tank speed is being held and changes it if so
+	        JTB.whileHeld(new checkJTB()); //checks if the button for changing the tank speed is being held and changes it if so
 	        
 		JBB.whenPressed(new JoystickButtonBHeld()); //sets JBBIsHeld to true
 		JBB.whenReleased(new JoystickButtonBRelease()); //sets JBBIsHeld to false
 		JBC.whenPressed(new JoystickButtonCHeld()); //sets JBCIsHeld to true
 		JBC.whenReleased(new JoystickButtonCRelease()); //sets JBCIsHeld to false
 	        
-	        JTB.whenPressed(new Joystick2ButtonBHeld()); //sets JTBIsHeld to true
-	        JTB.whenReleased(new Joystick2ButtonBRelease()); //sets JTBIsHeld to false
+	        JTA.whenPressed(new Joystick2ButtonBHeld()); //sets JTBIsHeld to true
+	        JTA.whenReleased(new Joystick2ButtonBRelease()); //sets JTBIsHeld to false
 	        
     }
 	
