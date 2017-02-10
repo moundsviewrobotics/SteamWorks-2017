@@ -21,7 +21,7 @@ public class Joystick2ButtonBHeld extends Command {
     protected void execute() {
     	OI.JTBIsHeld = true;
     	System.out.println("Joystick 2 Button B is being held");
-    	SmartDashboard.putBoolean("DB/LED 3", OI.JTBIsHeld);
+    	//SmartDashboard.putBoolean("DB/LED 3", OI.JTBIsHeld);
     }
 
     // Make this return true when this Command no longer needs to run execute()
