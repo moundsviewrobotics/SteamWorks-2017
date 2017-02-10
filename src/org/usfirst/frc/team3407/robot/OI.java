@@ -25,9 +25,11 @@ public class OI {
 	public static boolean isArcade = true;
 	public static boolean JBBIsHeld = false;
 	public static boolean JBCIsHeld = false;
-	public static JoystickButton JBA = new JoystickButton(stick, 1);
-	public static Button JBB = new JoystickButton(stick, 2);
-	public static Button JBC = new JoystickButton(stick, 3);
+	public static JoystickButton JBA = new JoystickButton(stick, 1); // creates joystick button A on stick 1
+	public static Button JBB = new JoystickButton(stick, 2); //creates joystick button B on stick 1
+	public static Button JBC = new JoystickButton(stick, 3); //creates joystick button C on stick 1
+	public static Button JTA = new JoystickButton(stick2, 1); //creates joystick button A on stick 2
+	public static Button JTB = new JoystickButton(stick2, 2); //creates joystick button b on stick 2
 
 	public static Joystick getInstance() {
 		// TODO Auto-generated method stub
