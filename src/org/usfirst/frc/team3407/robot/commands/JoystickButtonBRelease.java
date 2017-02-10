@@ -19,7 +19,8 @@ public class JoystickButtonBRelease extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	OI.JBBIsHeld = false;   	
+    	OI.JBBIsHeld = false;   
+        SmartDashboard.putBoolean("DB/LED 1", OI.JBBIsHeld);
     }
 
     // Make this return true when this Command no longer needs to run execute()
