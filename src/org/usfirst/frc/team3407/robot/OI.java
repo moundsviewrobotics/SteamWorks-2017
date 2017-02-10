@@ -19,14 +19,14 @@ public class OI {
     // Button button = new JoystickButton(stick, buttonNumber);
 	public static Joystick stick = new Joystick(0);
 	public static Joystick stick2 = new Joystick(1);
-	public static double x = stick.getX();
-	public static double y = stick.getY();
-	public static double nx = -x;
+	public static double x = stick.getX(); //not used
+	public static double y = stick.getY(); //not used
+	public static double nx = -x; //not used
 	public static boolean isArcade = true;
 	public static boolean tankIsSlow = false;
-	public static boolean JBBIsHeld = false;
-	public static boolean JBCIsHeld = false;
-	public static boolean JTBIsHeld = false;
+	public static boolean JBBIsHeld = false; //used to see if joystick 1 button B is held
+	public static boolean JBCIsHeld = false; //used to see if joystick 1 button C is held
+	public static boolean JTBIsHeld = false; //used to see if joystick 2 button B is held
 	public static JoystickButton JBA = new JoystickButton(stick, 1); // creates joystick button A on stick 1
 	public static Button JBB = new JoystickButton(stick, 2); //creates joystick button B on stick 1
 	public static Button JBC = new JoystickButton(stick, 3); //creates joystick button C on stick 1
@@ -61,17 +61,17 @@ public class OI {
     // button.whileHeld(new ExampleCommand());
 	
     {
-		JBA.whileHeld(new checkButtons()); //checks 
+		JBA.whileHeld(new checkButtons()); //checks if the buttons for changing the drive system are being held and changes it if so
 	        
-	        JTA.whileHeld(new checkJTB());
+	        JTA.whileHeld(new checkJTB()); //checks if the button for changing the tank speed is being held and changes it if so
 	        
-		JBB.whenPressed(new JoystickButtonBHeld());
-		JBB.whenReleased(new JoystickButtonBRelease());
-		JBC.whenPressed(new JoystickButtonCHeld());
-		JBC.whenReleased(new JoystickButtonCRelease());
+		JBB.whenPressed(new JoystickButtonBHeld()); //sets JBBIsHeld to true
+		JBB.whenReleased(new JoystickButtonBRelease()); //sets JBBIsHeld to false
+		JBC.whenPressed(new JoystickButtonCHeld()); //sets JBCIsHeld to true
+		JBC.whenReleased(new JoystickButtonCRelease()); //sets JBCIsHeld to false
 	        
-	        JTB.whenPressed(new Joystick2ButtonBHeld());
-	        JTB.whenReleased(new Joystick2ButtonBRelease());
+	        JTB.whenPressed(new Joystick2ButtonBHeld()); //sets JTBIsHeld to true
+	        JTB.whenReleased(new Joystick2ButtonBRelease()); //sets JTBIsHeld to false
 	        
     }
 	
