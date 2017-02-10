@@ -21,7 +21,7 @@ public class JoystickButtonCHeld extends Command {
     protected void execute() {
     	OI.JBCIsHeld = true;
     	System.out.println("Joystick Button C is being held");
-    	
+    	SmartDashboard.putBoolean("DB/LED 2", OI.JBCIsHeld);
     }
 
     // Make this return true when this Command no longer needs to run execute()
