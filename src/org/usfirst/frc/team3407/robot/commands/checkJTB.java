@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class checkButtons extends Command {
+public class checkJTB extends Command {
 
-    public checkButtons() {
+    public checkJTB() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
