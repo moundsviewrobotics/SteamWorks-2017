@@ -6,9 +6,9 @@ import org.usfirst.frc.team3407.robot.OI;
 /**
  *
  */
-public class JoystickButtonBHeld extends Command {
+public class Joystick2ButtonBHeld extends Command {
 
-    public JoystickButtonBHeld() {
+    public Joystick2ButtonBHeld() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
