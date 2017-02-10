@@ -39,7 +39,7 @@ public class OI {
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
     // commands the same as any other Button.
-	public static void toArcade(){
+    public static void toArcade(){
     	isArcade = true;
     }
     public static void toTank(){
@@ -59,11 +59,18 @@ public class OI {
     // button.whileHeld(new ExampleCommand());
 	
     {
-		JBA.whileHeld(new checkButtons());
+		JBA.whileHeld(new checkButtons()); //checks 
+	        
+	        JTA.whileHeld(new checkJTB());
+	        
 		JBB.whenPressed(new JoystickButtonBHeld());
 		JBB.whenReleased(new JoystickButtonBRelease());
 		JBC.whenPressed(new JoystickButtonCHeld());
 		JBC.whenReleased(new JoystickButtonCRelease());
+	        
+	        JTB.whenPressed(new JoystickButtonBHeld());
+	        JTB.whenReleased(new JoystickButtonCRelease());
+	        
     }
 	
     // Start the command when the button is released  and let it run the command
