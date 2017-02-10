@@ -70,8 +70,8 @@ public class OI {
 		JBC.whenPressed(new JoystickButtonCHeld());
 		JBC.whenReleased(new JoystickButtonCRelease());
 	        
-	        JTB.whenPressed(new JoystickButtonBHeld());
-	        JTB.whenReleased(new JoystickButtonCRelease());
+	        JTB.whenPressed(new Joystick2ButtonBHeld());
+	        JTB.whenReleased(new Joystick2ButtonBRelease());
 	        
     }
 	
