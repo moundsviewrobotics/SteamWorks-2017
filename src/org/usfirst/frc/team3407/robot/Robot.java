@@ -2,8 +2,10 @@
 package org.usfirst.frc.team3407.robot;
 
 import org.usfirst.frc.team3407.robot.subsystems.DriveSubsystem;
+import org.usfirst.frc.team3407.robot.commands.AutonomousPath1;
+import org.usfirst.frc.team3407.robot.commands.AutonomousPath2;
 
-
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -20,26 +22,25 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
+	
 	public static OI oi;
 	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
 	
-	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.1";
-	private static final String SOFTWARE_DATE = "DATE(02/04/17)";
-
+	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.2";
+	private static final String SOFTWARE_DATE = "DATE(02/11/17)";
     Command autonomousCommand;
-    SendableChooser chooser;
-
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
-        chooser = new SendableChooser();
-        SmartDashboard.putData("Auto mode", chooser);
+		oi = new OI(); 
         SmartDashboard.putString("DB/String 0", SOFTWARE_VERSION);
-        SmartDashboard.putString("DB/String 5", SOFTWARE_DATE);
+        SmartDashboard.putString("DB/String 5", SOFTWARE_DATE); 
+        
+        CameraServer server = CameraServer.getInstance();
+        server.startAutomaticCapture("Front", 0);
+        //server.startAutomaticCapture("Back", 1);
     }
 	
 	/**
@@ -55,6 +56,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 	}
 
+	//autochooser
 	/**
 	 * This autonomous (along with the chooser code above) shows how to select between different autonomous modes
 	 * using the dashboard. The sendable chooser code works with the Java SmartDashboard. If you prefer the LabVIEW
@@ -65,19 +67,21 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        autonomousCommand = (Command) chooser.getSelected();
         
-		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
-		switch(autoSelected) {
-		case "My Auto":
-			autonomousCommand = new MyAutoCommand();
-			break;
-		case "Default Auto":
-		default:
-			autonomousCommand = new ExampleCommand();
-			break;
-		} */
-    	
+        String selected = SmartDashboard.getString("Auto Selector","A");
+        System.out.println("SELECTED=" + selected);
+        
+        if(selected .equals("A")) {
+        	autonomousCommand = new AutonomousPath1();
+        }
+        else if(selected .equals("B")) {
+        	autonomousCommand = new AutonomousPath2();
+        }
+        else {
+        	autonomousCommand = new AutonomousPath1();
+        }
+        //note to future teams: don't use sendablechooser	
+        System.out.println(autonomousCommand);
     	// schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
     }
