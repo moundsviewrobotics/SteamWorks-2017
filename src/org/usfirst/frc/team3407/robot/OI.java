@@ -1,8 +1,10 @@
 package org.usfirst.frc.team3407.robot;
 
-//import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.*;
+import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team3407.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -16,18 +18,18 @@ public class OI {
     // number it is.
     // Joystick stick = new Joystick(port);
     // Button button = new JoystickButton(stick, buttonNumber);
-	public static Joystick stick = new Joystick(1);
-	public static double x = stick.getX();
-	public static double y = stick.getY();
+	public static Joystick stick = new Joystick(0);
+	public static Joystick stick2 = new Joystick(1);
 
-	public static Joystick getInstance() {
-		// TODO Auto-generated method stub
-		return stick;
-	}
-	
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
     // commands the same as any other Button.
+	public static void toArcade(){
+    	//isArcade = true;
+    }
+    public static void toTank(){
+    	//isArcade = false;
+    }
     
     //// TRIGGERING COMMANDS WITH BUTTONS
     // Once you have a button, it's trivial to bind it to a button in one of
@@ -40,9 +42,5 @@ public class OI {
     // Run the command while the button is being held down and interrupt it once
     // the button is released.
     // button.whileHeld(new ExampleCommand());
-    
-    // Start the command when the button is released  and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenReleased(new ExampleCommand());
 }
 

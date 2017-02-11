@@ -1,24 +1,19 @@
 package org.usfirst.frc.team3407.robot.subsystems;
 
-
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
-//import edu.wpi.first.wpilibj.SpeedController;
-//import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team3407.robot.OI;
-import org.usfirst.frc.team3407.robot.commands.*;
+import org.usfirst.frc.team3407.robot.commands.DriveCommand;
 
 /**
  *
  */
 public class DriveSubsystem extends Subsystem {
     
-	
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 	private RobotDrive drive;
+	
 	public DriveSubsystem() {
 		drive = new RobotDrive(0, 1, 2, 3);
 		drive.setSafetyEnabled(false);
@@ -26,22 +21,20 @@ public class DriveSubsystem extends Subsystem {
 	}
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new DriveCommand());
     }
-    //figure out how to get arcadeDrive to work
-    public void ArcadeDrive(){
-    	drive.arcadeDrive(OI.stick.getX(), OI.stick.getY());;
+    
+    public void arcadeDrive(){
+    	drive.arcadeDrive(OI.stick.getY(), -OI.stick.getX());;
     }
     
-    public void AutonomousDrive (double speedl, double time){
+    public void driveForward(double speedl, double time) {
     	drive.drive(speedl, 0);
     	Timer.delay(time);
     	drive.drive(0, 0);
     }
-    //new test Autonomous for Sendable chooser
-    public void  AutonomousDriveRight(double AutoSpeed, double AutoTime) {
+    
+    public void  driveRight(double AutoSpeed, double AutoTime) {
     	drive.drive(AutoSpeed/2, 0);
     	Timer.delay(AutoTime/4);
     	drive.drive(AutoSpeed, .5);

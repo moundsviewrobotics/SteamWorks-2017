@@ -4,8 +4,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team3407.robot.*;
 import org.usfirst.frc.team3407.robot.subsystems.DriveSubsystem;
 
-
-
 /**
  *
  */
@@ -24,7 +22,7 @@ public class DriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveSubsystem.ArcadeDrive();
+    	Robot.driveSubsystem.arcadeDrive();
     }
 
     // Make this return true when this Command no longer needs to run execute()
