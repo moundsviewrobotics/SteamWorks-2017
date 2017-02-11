@@ -40,6 +40,16 @@ public class DriveSubsystem extends Subsystem {
     	Timer.delay(time);
     	drive.drive(0, 0);
     }
+    //new test Autonomous for Sendable chooser
+    public void  AutonomousDriveRight(double AutoSpeed, double AutoTime) {
+    	drive.drive(AutoSpeed/2, 0);
+    	Timer.delay(AutoTime/4);
+    	drive.drive(AutoSpeed, .5);
+    	Timer.delay(AutoTime/2);
+    	drive.drive(AutoSpeed/2, 0.5);
+    	Timer.delay(AutoTime/4);
+    	drive.drive(0, 0);
+    }
     public void stop(){
     	drive.drive(0, 0);
     }
