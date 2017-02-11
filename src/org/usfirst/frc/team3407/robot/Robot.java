@@ -4,6 +4,8 @@ package org.usfirst.frc.team3407.robot;
 import org.usfirst.frc.team3407.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPath1;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPath2;
+
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -35,6 +37,10 @@ public class Robot extends IterativeRobot {
 		oi = new OI(); 
         SmartDashboard.putString("DB/String 0", SOFTWARE_VERSION);
         SmartDashboard.putString("DB/String 5", SOFTWARE_DATE); 
+        
+        CameraServer server = CameraServer.getInstance();
+        server.startAutomaticCapture("Front", 0);
+        //server.startAutomaticCapture("Back", 1);
     }
 	
 	/**
