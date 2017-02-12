@@ -5,6 +5,7 @@ import org.usfirst.frc.team3407.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPath1;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPath2;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -26,15 +27,25 @@ public class Robot extends IterativeRobot {
 	
 	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.2";
 	private static final String SOFTWARE_DATE = "DATE(02/11/17)";
-    Command autonomousCommand;
+    private Command autonomousCommand = null;
+    private AnalogGyro gyro = null;
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
+    	
+    	gyro = new AnalogGyro(1);
+    	
 		oi = new OI(); 
-        SmartDashboard.putString("DB/String 0", SOFTWARE_VERSION);
+        
+		SmartDashboard.putString("DB/String 0", SOFTWARE_VERSION);
         SmartDashboard.putString("DB/String 5", SOFTWARE_DATE); 
+        
+        SmartDashboard.putData(Scheduler.getInstance());
+        SmartDashboard.putData(driveSubsystem);
+        SmartDashboard.putData("Gryo", gyro);
         
         CameraServer server = CameraServer.getInstance();
         server.startAutomaticCapture("Front", 0);
