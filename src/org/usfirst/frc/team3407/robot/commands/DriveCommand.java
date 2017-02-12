@@ -10,8 +10,6 @@ import org.usfirst.frc.team3407.robot.subsystems.DriveSubsystem;
 public class DriveCommand extends Command {
 
     public DriveCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Robot.driveSubsystem);
     }
 
@@ -22,7 +20,13 @@ public class DriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveSubsystem.arcadeDrive();
+    	//System.out.println("ARCADE=" + OI.isArcade());
+    	if(OI.isArcade()) {
+    		Robot.driveSubsystem.arcadeDrive();
+    	}
+    	else {
+    		Robot.driveSubsystem.tankDrive();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

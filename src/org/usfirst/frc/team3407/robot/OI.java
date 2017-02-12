@@ -1,10 +1,7 @@
 package org.usfirst.frc.team3407.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.*;
-import edu.wpi.first.wpilibj.command.Command;
-
-import org.usfirst.frc.team3407.robot.commands.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -12,23 +9,37 @@ import org.usfirst.frc.team3407.robot.commands.*;
  */
 
 public class OI {
-    //// CREATING BUTTONS
-    // One type of button is a joystick button which is any button on a joystick.
-    // You create one by telling it which joystick it's on and which button
-    // number it is.
-    // Joystick stick = new Joystick(port);
-    // Button button = new JoystickButton(stick, buttonNumber);
+	
+	public static final String SOFTWARE_VERSION_KEY = 		"DB/String 0";
+	public static final String SOFTWARE_DATE_KEY = 			"DB/String 5";
+	private static final String ARCADE_MODE_KEY = 			"DB/Button 1";
+	public static final String ARCADE_DISPLAY_KEY = 		"DB/String 1";
+	
 	public static Joystick stick = new Joystick(0);
 	public static Joystick stick2 = new Joystick(1);
 
-    // There are a few additional built in buttons you can use. Additionally,
-    // by subclassing Button you can create custom triggers and bind those to
-    // commands the same as any other Button.
-	public static void toArcade(){
-    	//isArcade = true;
+	static {
+		toArcade();
+	}
+	
+	public static boolean isArcade() {
+		boolean value = SmartDashboard.getBoolean(ARCADE_MODE_KEY,  true);
+		setArcadeDisplay(value);
+		return value;
+	}
+
+	public static void toArcade() {
+		SmartDashboard.putBoolean(ARCADE_MODE_KEY,  true);
+		setArcadeDisplay(true);
     }
-    public static void toTank(){
-    	//isArcade = false;
+	
+    public static void toTank() {
+		SmartDashboard.putBoolean(ARCADE_MODE_KEY,  false);
+		setArcadeDisplay(false);
+    }
+    
+    private static void setArcadeDisplay(boolean mode) {
+		SmartDashboard.putString(ARCADE_DISPLAY_KEY,  (mode ? "Arcade" : "Tank") + " Drive Mode");    	
     }
     
     //// TRIGGERING COMMANDS WITH BUTTONS

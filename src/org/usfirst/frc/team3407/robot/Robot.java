@@ -40,8 +40,8 @@ public class Robot extends IterativeRobot {
     	
 		oi = new OI(); 
         
-		SmartDashboard.putString("DB/String 0", SOFTWARE_VERSION);
-        SmartDashboard.putString("DB/String 5", SOFTWARE_DATE); 
+		SmartDashboard.putString(OI.SOFTWARE_VERSION_KEY, SOFTWARE_VERSION);
+        SmartDashboard.putString(OI.SOFTWARE_DATE_KEY, SOFTWARE_DATE); 
         
         SmartDashboard.putData(Scheduler.getInstance());
         SmartDashboard.putData(driveSubsystem);
@@ -49,7 +49,7 @@ public class Robot extends IterativeRobot {
         
         CameraServer server = CameraServer.getInstance();
         server.startAutomaticCapture("Front", 0);
-        //server.startAutomaticCapture("Back", 1);
+        server.startAutomaticCapture("Back", 1);
     }
 	
 	/**

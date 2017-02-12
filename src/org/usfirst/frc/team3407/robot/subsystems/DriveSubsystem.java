@@ -28,6 +28,10 @@ public class DriveSubsystem extends Subsystem {
     	drive.arcadeDrive(OI.stick.getY(), -OI.stick.getX());;
     }
     
+    public void tankDrive(){
+    	drive.arcadeDrive(OI.stick.getY(), OI.stick2.getY());;
+    }
+    
     public void driveForward(double speedl, double time) {
     	drive.drive(speedl, 0);
     	Timer.delay(time);
