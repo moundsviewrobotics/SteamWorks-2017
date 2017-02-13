@@ -2,16 +2,18 @@
 package org.usfirst.frc.team3407.robot;
 
 import org.usfirst.frc.team3407.robot.subsystems.DriveSubsystem;
+import org.usfirst.frc.team3407.robot.subsystems.loader;
+import org.usfirst.frc.team3407.robot.subsystems.linearSlide;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPath1;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPath2;
 
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.VictorSP;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,32 +26,25 @@ public class Robot extends IterativeRobot {
 	
 	public static OI oi;
 	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
+	public static loader ballLoader = new loader();
+	public static linearSlide slide = new linearSlide();
+	
 	
 	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.2";
 	private static final String SOFTWARE_DATE = "DATE(02/11/17)";
-    private Command autonomousCommand = null;
-    private AnalogGyro gyro = null;
-    
+    Command autonomousCommand;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-    	
-    	gyro = new AnalogGyro(1);
-    	
 		oi = new OI(); 
-        
-		SmartDashboard.putString(OI.SOFTWARE_VERSION_KEY, SOFTWARE_VERSION);
-        SmartDashboard.putString(OI.SOFTWARE_DATE_KEY, SOFTWARE_DATE); 
-        
-        SmartDashboard.putData(Scheduler.getInstance());
-        SmartDashboard.putData(driveSubsystem);
-        SmartDashboard.putData("Gryo", gyro);
+        SmartDashboard.putString("DB/String 0", SOFTWARE_VERSION);
+        SmartDashboard.putString("DB/String 5", SOFTWARE_DATE); 
         
         CameraServer server = CameraServer.getInstance();
         server.startAutomaticCapture("Front", 0);
-        server.startAutomaticCapture("Back", 1);
+        //server.startAutomaticCapture("Back", 1);
     }
 	
 	/**
