@@ -21,11 +21,11 @@ public class OI {
 	public static Joystick stick = new Joystick(0);
 	public static Joystick stick2 = new Joystick(1);
 	
-	public static JoystickButton startShooter = new JoystickButton(stick, 5);
-	public static JoystickButton stopShooter = new JoystickButton(stick, 6);
-	public static JoystickButton left = new JoystickButton(stick, 7);
-	public static JoystickButton right = new JoystickButton(stick, 8);
-	public static JoystickButton startLoader = new JoystickButton(stick, 9);
+	public static JoystickButton startShooter = new JoystickButton(stick, 6);
+	public static JoystickButton stopShooter = new JoystickButton(stick, 7);
+	public static JoystickButton left = new JoystickButton(stick, 8);
+	public static JoystickButton right = new JoystickButton(stick, 9);
+	public static JoystickButton startLoader = new JoystickButton(stick, 10);
 	
 
     // There are a few additional built in buttons you can use. Additionally,
