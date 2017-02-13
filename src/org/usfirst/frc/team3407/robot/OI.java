@@ -24,7 +24,7 @@ public class OI {
 	public static double nx = -x; //not used
 	public static boolean isArcade = true;
 	public static boolean tankIsSlow = false;
-	public static/* boolean JBBIsHeld = false; //used to see if joystick 1 button B is held
+	/*public static boolean JBBIsHeld = false; //used to see if joystick 1 button B is held
 	public static boolean JBCIsHeld = false; //used to see if joystick 1 button C is held
 	public static boolean JTBIsHeld = false; //used to see if joystick 2 button B is held
 	public static JoystickButton JBA = new JoystickButton(stick, 1); // creates joystick button A on stick 1
@@ -32,6 +32,9 @@ public class OI {
 	public static Button JBC = new JoystickButton(stick, 3); //creates joystick button C on stick 1
 	public static Button JTA = new JoystickButton(stick2, 1); //creates joystick button A on stick 2
 	public static Button JTB = new JoystickButton(stick2, 2);*/ //creates joystick button b on stick 2*	
+	public static Button arcadeButton = new JoystickButton(stick, 2)
+		tankButton = new JoystickButton(stick, 3)
+		slowTankButton = new JoystickButton(stick2, 2)
 
 	public static Joystick getInstance() {
 		// TODO Auto-generated method stub
@@ -61,7 +64,7 @@ public class OI {
     // button.whileHeld(new ExampleCommand());
 	
     {
-		JBA.whileHeld(new checkButtons()); //checks if the buttons for changing the drive system are being held and changes it if so
+		/*JBA.whileHeld(new checkButtons()); //checks if the buttons for changing the drive system are being held and changes it if so
 	        
 	        JTA.whileHeld(new checkJTB()); //checks if the button for changing the tank speed is being held and changes it if so
 	        
@@ -71,7 +74,10 @@ public class OI {
 		JBC.whenReleased(new JoystickButtonCRelease()); //sets JBCIsHeld to false
 	        
 	        JTB.whenPressed(new Joystick2ButtonBHeld()); //sets JTBIsHeld to true
-	        JTB.whenReleased(new Joystick2ButtonBRelease()); //sets JTBIsHeld to false
+	        JTB.whenReleased(new Joystick2ButtonBRelease()); //sets JTBIsHeld to false*/
+	        arcadeButton.whenPressed(new toArcade());
+	    tankButton.whenPressed(new toTank());
+	    slowTankButton.whenPressed(new toSlowTank());
 	        
     }
 	
