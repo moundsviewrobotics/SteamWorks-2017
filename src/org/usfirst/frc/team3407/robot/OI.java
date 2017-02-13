@@ -24,14 +24,14 @@ public class OI {
 	public static double nx = -x; //not used
 	public static boolean isArcade = true;
 	public static boolean tankIsSlow = false;
-	public static boolean JBBIsHeld = false; //used to see if joystick 1 button B is held
+	public static/* boolean JBBIsHeld = false; //used to see if joystick 1 button B is held
 	public static boolean JBCIsHeld = false; //used to see if joystick 1 button C is held
 	public static boolean JTBIsHeld = false; //used to see if joystick 2 button B is held
 	public static JoystickButton JBA = new JoystickButton(stick, 1); // creates joystick button A on stick 1
 	public static Button JBB = new JoystickButton(stick, 2); //creates joystick button B on stick 1
 	public static Button JBC = new JoystickButton(stick, 3); //creates joystick button C on stick 1
 	public static Button JTA = new JoystickButton(stick2, 1); //creates joystick button A on stick 2
-	public static Button JTB = new JoystickButton(stick2, 2); //creates joystick button b on stick 2
+	public static Button JTB = new JoystickButton(stick2, 2);*/ //creates joystick button b on stick 2*	
 
 	public static Joystick getInstance() {
 		// TODO Auto-generated method stub
