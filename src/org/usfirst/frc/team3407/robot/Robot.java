@@ -28,7 +28,7 @@ public class Robot extends IterativeRobot {
 	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.2";
 	private static final String SOFTWARE_DATE = "DATE(02/14/17)";
     private Command autonomousCommand = null;
-    private AnalogGyro gyro = null;
+    public AnalogGyro gyro = null;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -37,6 +37,9 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
     	
     	gyro = new AnalogGyro(1);
+    	gyro.initGyro();
+    	gyro.calibrate();
+    	
     	
 		oi = new OI(); 
         
@@ -87,7 +90,7 @@ public class Robot extends IterativeRobot {
         else if(selected .equals("B")) {
         	autonomousCommand = new AutonomousPath2();
         }
-        //Default to atonomous 1
+        //Default to autonomous 1
         else {
         	autonomousCommand = new AutonomousPath1();
         }

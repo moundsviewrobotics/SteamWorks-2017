@@ -33,10 +33,24 @@ public class DriveSubsystem extends Subsystem {
     }
     
     public void driveForward(double speedl, double time) {
-    	drive.drive(speedl, 0);
+    	drive.tankDrive(speedl, speedl);
     	Timer.delay(time);
-    	drive.drive(0, 0);
+    	drive.tankDrive(0, 0);
     }
+    //make sure these  (these being speed for both turnLeft and turnRight and driveForward)
+    //are set to stick esq values. (-1.0 to 1.0)
+    public void turnRight(double speed, double time) {
+    	drive.tankDrive(-speed,speed);
+    	Timer.delay(time);
+    	drive.tankDrive(0, 0);
+    }
+    public void turnLeft(double speed, double time) {
+    	drive.tankDrive(speed,-speed);
+    	Timer.delay(time);
+    	drive.tankDrive(0, 0);
+    }
+    //TODO: add gryo turning method
+    
     public void stop(){
     	drive.drive(0, 0);
     }
