@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3407.robot.commands;
 
 import org.usfirst.frc.team3407.robot.Robot;
+import org.usfirst.frc.team3407.robot.subsystems.DriveSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -20,8 +21,8 @@ public class AutonomousPath1 extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    //Robot.driveSubsystem.AutonomousDrive(1.0, 5);
-    System.out.println("A");
+    	Robot.driveSubsystem.driveForward(1, 5);
+    	System.out.println("A");
     }
 
     // Make this return true when this Command no longer needs to run execute()

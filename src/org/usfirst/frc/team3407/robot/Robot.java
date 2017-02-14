@@ -26,7 +26,7 @@ public class Robot extends IterativeRobot {
 	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
 	
 	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.2";
-	private static final String SOFTWARE_DATE = "DATE(02/11/17)";
+	private static final String SOFTWARE_DATE = "DATE(02/14/17)";
     private Command autonomousCommand = null;
     private AnalogGyro gyro = null;
     
@@ -76,16 +76,18 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        
+        //Get data from Dashboard
         String selected = SmartDashboard.getString("Auto Selector","A");
         System.out.println("SELECTED=" + selected);
-        
+        //if we get "A" from dashboard, execute autonomous 1 later
         if(selected .equals("A")) {
         	autonomousCommand = new AutonomousPath1();
         }
+        //if we get "B" from dashboard, execute autonomous 2 later
         else if(selected .equals("B")) {
         	autonomousCommand = new AutonomousPath2();
         }
+        //Default to atonomous 1
         else {
         	autonomousCommand = new AutonomousPath1();
         }
