@@ -1,7 +1,9 @@
 package org.usfirst.frc.team3407.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team3407.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -37,11 +39,11 @@ public class OI {
 		SmartDashboard.putBoolean(ARCADE_MODE_KEY,  false);
 		setArcadeDisplay(false);
     }
-    
     private static void setArcadeDisplay(boolean mode) {
 		SmartDashboard.putString(ARCADE_DISPLAY_KEY,  (mode ? "Arcade" : "Tank") + " Drive Mode");    	
     }
     
+    public static JoystickButton startFeeder = new JoystickButton(stick,5);
     //// TRIGGERING COMMANDS WITH BUTTONS
     // Once you have a button, it's trivial to bind it to a button in one of
     // three ways:
@@ -53,5 +55,7 @@ public class OI {
     // Run the command while the button is being held down and interrupt it once
     // the button is released.
     // button.whileHeld(new ExampleCommand());
+
+    startFeeder.whenPressed(new startFeeder());
 }
 
