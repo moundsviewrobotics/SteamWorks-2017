@@ -5,7 +5,6 @@ import org.usfirst.frc.team3407.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPath1;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPath2;
 
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Victor;
@@ -43,13 +42,13 @@ public class Robot extends IterativeRobot {
 		
     	oi = new OI(); 
         
-		SmartDashboard.putString(OI.SOFTWARE_VERSION_KEY, SOFTWARE_VERSION);
-        SmartDashboard.putString(OI.SOFTWARE_DATE_KEY, SOFTWARE_DATE); 
+		//SmartDashboard.putString(OI.SOFTWARE_VERSION_KEY, SOFTWARE_VERSION);
+       //SmartDashboard.putString(OI.SOFTWARE_DATE_KEY, SOFTWARE_DATE); 
         
         SmartDashboard.putData(Scheduler.getInstance());
         SmartDashboard.putData(driveSubsystem);
         
-        CameraServer server = CameraServer.getInstance();
+        //CameraServer server = CameraServer.getInstance();
         //server.startAutomaticCapture("Front", 0);
         //server.startAutomaticCapture("Back", 1);
     }
