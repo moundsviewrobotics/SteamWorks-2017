@@ -29,10 +29,6 @@ public class DriveSubsystem extends Subsystem {
     }
 
     
-    public void tankDrive(){
-    	drive.tankDrive(OI.stick.getY(), OI.stick2.getY());	
-    }
-    
     public void driveForward(double speedl, double time) {
     	drive.drive(speedl, 0);
     	Timer.delay(time);
