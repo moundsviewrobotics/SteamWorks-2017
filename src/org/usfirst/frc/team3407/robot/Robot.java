@@ -48,7 +48,6 @@ public class Robot extends IterativeRobot {
         
         SmartDashboard.putData(Scheduler.getInstance());
         SmartDashboard.putData(driveSubsystem);
-        SmartDashboard.putData("Gryo", gyro);
         
         CameraServer server = CameraServer.getInstance();
         //server.startAutomaticCapture("Front", 0);
