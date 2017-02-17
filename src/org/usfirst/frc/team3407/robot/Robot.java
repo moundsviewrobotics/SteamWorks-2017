@@ -1,4 +1,3 @@
-
 package org.usfirst.frc.team3407.robot;
 
 import org.usfirst.frc.team3407.robot.subsystems.DriveSubsystem;
@@ -28,6 +27,39 @@ public class Robot extends IterativeRobot {
 	
 	public static OI oi;
 	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
+	public static loader ballLoader = new loader();
+	public static linearSlide slide = new linearSlide();
+	
+	
+	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.2";
+	private static final String SOFTWARE_DATE = "DATE(02/11/17)";
+    Command autonomousCommand;
+    private Victor shooterMotor = new Victor(2);
+    private Encoder shooterSensor = new Encoder(1, 2);
+    
+    /**
+     * This function is run when the robot is first started up and should be
+     * used for any initialization code.
+     */
+    public void robotInit() {
+		oi = new OI(); 
+        SmartDashboard.putString("DB/String 0", SOFTWARE_VERSION);
+        SmartDashboard.putString("DB/String 5", SOFTWARE_DATE); 
+        
+        CameraServer server = CameraServer.getInstance();
+        server.startAutomaticCapture("Front", 0);
+ 
+		
+    	oi = new OI(); 
+        
+		//SmartDashboard.putString(OI.SOFTWARE_VERSION_KEY, SOFTWARE_VERSION);
+       //SmartDashboard.putString(OI.SOFTWARE_DATE_KEY, SOFTWARE_DATE); 
+        
+        SmartDashboard.putData(Scheduler.getInstance());
+        SmartDashboard.putData(driveSubsystem);
+        
+        //CameraServer server = CameraServer.getInstance();
+        //server.startAutomaticCapture("Front", 0);
         //server.startAutomaticCapture("Back", 1);
     }
 	

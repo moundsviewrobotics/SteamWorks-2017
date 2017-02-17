@@ -24,6 +24,11 @@ public class DriveSubsystem extends Subsystem {
     	setDefaultCommand(new DriveCommand());
     }
     
+    public void tankDrive(){
+    	drive.tankDrive(OI.stick.getY(), OI.stick2.getY());	
+    }
+    
+    
     public void arcadeDrive(){
     	drive.arcadeDrive(OI.stick.getY(), -OI.stick.getX());;
     }
