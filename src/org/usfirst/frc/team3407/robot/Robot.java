@@ -8,6 +8,8 @@ import org.usfirst.frc.team3407.robot.commands.AutonomousPath2;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -24,35 +26,32 @@ public class Robot extends IterativeRobot {
 	
 	public static OI oi;
 	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
+ //   public static  AnalogGyro gyro = new AnalogGyro(1);
+    private Victor shooterMotor = new Victor(2);
+    private Encoder shooterSensor = new Encoder(1, 2);
 	
 	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.2";
-	private static final String SOFTWARE_DATE = "DATE(02/14/17)";
+	private static final String SOFTWARE_DATE = "DATE(02/11/17)";
     private Command autonomousCommand = null;
-    public AnalogGyro gyro = null;
     
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-    	
-    	gyro = new AnalogGyro(1);
-    	gyro.initGyro();
-    	gyro.calibrate();
-    	
-    	
-		oi = new OI(); 
+ 
+		
+    	oi = new OI(); 
         
 		SmartDashboard.putString(OI.SOFTWARE_VERSION_KEY, SOFTWARE_VERSION);
         SmartDashboard.putString(OI.SOFTWARE_DATE_KEY, SOFTWARE_DATE); 
         
         SmartDashboard.putData(Scheduler.getInstance());
         SmartDashboard.putData(driveSubsystem);
-        SmartDashboard.putData("Gryo", gyro);
         
         CameraServer server = CameraServer.getInstance();
-        server.startAutomaticCapture("Front", 0);
-        server.startAutomaticCapture("Back", 1);
+        //server.startAutomaticCapture("Front", 0);
+        //server.startAutomaticCapture("Back", 1);
     }
 	
 	/**
@@ -79,18 +78,16 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        //Get data from Dashboard
+        
         String selected = SmartDashboard.getString("Auto Selector","A");
         System.out.println("SELECTED=" + selected);
-        //if we get "A" from dashboard, execute autonomous 1 later
+        
         if(selected .equals("A")) {
         	autonomousCommand = new AutonomousPath1();
         }
-        //if we get "B" from dashboard, execute autonomous 2 later
         else if(selected .equals("B")) {
         	autonomousCommand = new AutonomousPath2();
         }
-        //Default to autonomous 1
         else {
         	autonomousCommand = new AutonomousPath1();
         }
@@ -126,6 +123,17 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
+    	
+    	LiveWindow.addActuator("Shooter",  "motor", shooterMotor);
+    	LiveWindow.addSensor("Shooter",  "sensor", shooterSensor);
         LiveWindow.run();
+        
+        //while(true) {
+        //	Thread.sleep(50);
+        	double speed = Math.min(SmartDashboard.getNumber("DB/Slider 0", 0.2), 1.0);
+        	System.out.println("Setting" + speed);
+        	shooterMotor.set(speed);
+        	SmartDashboard.putNumber("Encoder", shooterSensor.getRate());
+        //}
     }
 }
