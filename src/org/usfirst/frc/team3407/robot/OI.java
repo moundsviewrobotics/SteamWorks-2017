@@ -26,11 +26,16 @@ public class OI {
 	public static JoystickButton left = new JoystickButton(stick, 8);
 	public static JoystickButton right = new JoystickButton(stick, 9);
 	public static JoystickButton startLoader = new JoystickButton(stick, 10);
+	public static JoystickButton stopFeeder = new JoystickButton(stick, 4);
+	public static JoystickButton startFeeder = new JoystickButton(stick, 5);
 	
 
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
     // commands the same as any other Button.
+	public static boolean isArcade() {
+		return true;
+	}
 	public static void toArcade(){
     	//isArcade = true;
     }
@@ -42,6 +47,9 @@ public class OI {
     	stopShooter.whenPressed(new stopLoading());
     	right.whenPressed(new slideRight());
     	left.whenPressed(new slideLeft());
+    	
+    	startFeeder.whenPressed(new StartFeeder());
+    	stopFeeder.whenPressed(new StopFeeder());
     }
     
     //// TRIGGERING COMMANDS WITH BUTTONS
