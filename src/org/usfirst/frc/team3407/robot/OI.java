@@ -34,7 +34,7 @@ public class OI {
 	public static JoystickButton stopShooting = new JoystickButton(stick, 6);
 	
     static {
-    	startLoading.whenPressed(new startLoading());
+    	startLoading.whenActive(new startLoading());
     	startShooting.whenPressed(new startShooting());
     	stopLoading.whenPressed(new stopLoading());
     	stopShooting.whenPressed(new stopShooting());

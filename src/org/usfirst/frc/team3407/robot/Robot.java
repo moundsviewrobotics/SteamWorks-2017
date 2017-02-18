@@ -29,7 +29,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
 	public static loader ballLoader = new loader();
-	public static linearSlide slide = new linearSlide();
+	//public static linearSlide slide = new linearSlide();
 	public static shooterPID shooterpid = new shooterPID();
 
 	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.3";
@@ -84,8 +84,11 @@ public class Robot extends IterativeRobot {
         if(selected .equals("A")) {
         	autonomousCommand = new AutonomousPath1();
         }
-        else if(selected .equals("B")) {
-        	autonomousCommand = new AutonomousPath2();
+        else if(selected .equals("pos1B")) {
+        	autonomousCommand = new AutonomousPath2(true);
+        }
+        else if(selected .equals("pos1R")){
+        	autonomousCommand = new AutonomousPath2(false);
         }
         else {
         	autonomousCommand = new AutonomousPath1();
