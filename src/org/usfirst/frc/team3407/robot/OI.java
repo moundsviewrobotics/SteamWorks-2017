@@ -3,6 +3,7 @@ package org.usfirst.frc.team3407.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team3407.robot.commands.*;
 
@@ -12,6 +13,10 @@ import org.usfirst.frc.team3407.robot.commands.*;
  */
 
 public class OI {
+	
+	private static final String ARCADE_MODE_KEY = "DB/Button 1";
+	private static final String ARCADE_DISPLAY_KEY = "DB/String 2";
+	
 	public static Joystick stick = new Joystick(0);
 	public static Joystick stick2 = new Joystick(1);
 	
@@ -21,13 +26,26 @@ public class OI {
     static {
     	startLoading.whenPressed(new startLoading());
     	startShooting.whenPressed(new startShooting());
+    	toArcade(); 
     }
 
-	public static void toArcade(){
-    	//isArcade = true;
-    }
-    
-	public static void toTank(){
-    	//isArcade = false;
-    }
+    public static boolean isArcade() { 
+    	boolean value = SmartDashboard.getBoolean(ARCADE_MODE_KEY,  true); 
+    	setArcadeDisplay(value); 
+    	return value; 
+    } 
+
+    public static void toArcade() { 
+    	SmartDashboard.putBoolean(ARCADE_MODE_KEY,  true); 
+    	setArcadeDisplay(true); 
+    } 
+
+    public static void toTank() { 
+    	SmartDashboard.putBoolean(ARCADE_MODE_KEY, false); 
+    	setArcadeDisplay(false); 
+    } 
+
+    private static void setArcadeDisplay(boolean mode) { 
+    	SmartDashboard.putString(ARCADE_DISPLAY_KEY,  (mode ? "Arcade" : "Tank") + " Drive Mode");    	 
+    } 
 }
