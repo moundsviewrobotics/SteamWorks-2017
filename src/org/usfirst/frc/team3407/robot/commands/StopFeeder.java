@@ -1,9 +1,7 @@
 package org.usfirst.frc.team3407.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team3407.robot.OI;
 import org.usfirst.frc.team3407.robot.subsystems.*;
 
 /**
@@ -22,7 +20,6 @@ public class StopFeeder extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putBoolean(OI.FEEDER_ENGAGED_KEY, false);    	 
     	Feeder.stop();
     }
 

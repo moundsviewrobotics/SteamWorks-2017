@@ -1,7 +1,6 @@
 package org.usfirst.frc.team3407.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team3407.robot.subsystems.*;
 import org.usfirst.frc.team3407.robot.OI;
@@ -13,7 +12,7 @@ public class StartFeeder extends Command {
 
     public StartFeeder() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        //requires(Robot.chassis);
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +21,6 @@ public class StartFeeder extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putBoolean(OI.FEEDER_ENGAGED_KEY, true);    	 
     	Feeder.start();
     }
 
