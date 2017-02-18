@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.VictorSP;
  */
 
 public class shooterPID extends PIDSubsystem {
-	private VictorSP shooterVictor = new VictorSP(9);
+	private VictorSP shooterVictor = new VictorSP(5);
 	private Encoder encoder = new Encoder(1, 2);
 	
     // Initialize your subsystem here

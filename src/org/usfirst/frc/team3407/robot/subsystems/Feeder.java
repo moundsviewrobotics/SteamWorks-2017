@@ -10,7 +10,7 @@ public class Feeder extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	public static SpeedController feederMotor = new VictorSP(7);
+	public static SpeedController feederMotor = new VictorSP(6);
 	
 	public static void start() {
 		feederMotor.set(1);

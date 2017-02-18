@@ -9,9 +9,7 @@ import edu.wpi.first.wpilibj.SpeedController;
  */
 public class loader extends Subsystem {
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-	public static SpeedController loadShooter = new VictorSP(8);
+	public static SpeedController loadShooter = new VictorSP(4);
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

@@ -31,8 +31,8 @@ public class Robot extends IterativeRobot {
 	public static linearSlide slide = new linearSlide();
 	public static shooterPID shooterpid = new shooterPID();
 
-	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.2";
-	private static final String SOFTWARE_DATE = "DATE(02/11/17)";
+	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.3";
+	private static final String SOFTWARE_DATE = "DATE(02/17/17)";
     Command autonomousCommand;
 
     /**

@@ -1,6 +1,9 @@
 package org.usfirst.frc.team3407.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team3407.robot.OI;
 import org.usfirst.frc.team3407.robot.Robot;
 import org.usfirst.frc.team3407.robot.subsystems.loader;
 
@@ -21,8 +24,8 @@ public class startLoading extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	loader.shoot();
-    	
+    	SmartDashboard.putBoolean(OI.LOADER_ENGAGED_KEY, true);    	 
+    	loader.shoot();   	
     }
 
     // Make this return true when this Command no longer needs to run execute()

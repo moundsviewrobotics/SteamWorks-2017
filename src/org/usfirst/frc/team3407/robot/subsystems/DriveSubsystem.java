@@ -14,7 +14,7 @@ public class DriveSubsystem extends Subsystem {
 	private RobotDrive drive;
 	
 	public DriveSubsystem() {
-		drive = new RobotDrive(0, 1);
+		drive = new RobotDrive(0, 1, 2, 3);
 		drive.setSafetyEnabled(false);
 		drive.setSensitivity(0.75);
 	}
@@ -24,7 +24,7 @@ public class DriveSubsystem extends Subsystem {
     }
     
     public void arcadeDrive(){
-    	drive.arcadeDrive(OI.stick.getY(), OI.stick.getX());	
+    	drive.arcadeDrive(OI.stick.getY(), -OI.stick.getX());	
     }
     
     public void tankDrive(){

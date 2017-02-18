@@ -17,15 +17,29 @@ public class OI {
 	private static final String ARCADE_MODE_KEY = "DB/Button 1";
 	private static final String ARCADE_DISPLAY_KEY = "DB/String 2";
 	
+	public static final String SHOOTER_ENGAGED_KEY = "DB/LED 0";
+	public static final String LOADER_ENGAGED_KEY = "DB/LED 1";
+	public static final String FEEDER_ENGAGED_KEY = "DB/LED 2";
+	
 	public static Joystick stick = new Joystick(0);
 	public static Joystick stick2 = new Joystick(1);
 	
-	public static JoystickButton startLoading = new JoystickButton(stick, 5);
+	public static JoystickButton startLoading = new JoystickButton(stick, 1);
 	public static JoystickButton startShooting = new JoystickButton(stick, 6);
+	public static JoystickButton stopLoading = new JoystickButton(stick, 2);
+	public static JoystickButton stopShooting = new JoystickButton(stick, 5);
+	public static JoystickButton startFeeder = new JoystickButton(stick, 3);
+	public static JoystickButton stopFeeder = new JoystickButton(stick, 4);
 	
     static {
     	startLoading.whenPressed(new startLoading());
     	startShooting.whenPressed(new startShooting());
+    	stopLoading.whenPressed(new stopLoading());
+    	stopShooting.whenPressed(new stopShooting());
+    	
+    	startFeeder.whenPressed(new StartFeeder());
+    	stopFeeder.whenPressed(new StopFeeder());
+    	
     	toArcade(); 
     }
 
