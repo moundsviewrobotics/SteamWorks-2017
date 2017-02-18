@@ -19,7 +19,9 @@ public class AutonomousPath2 extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveSubsystem.driveForward(0.7, 5);
+    	Robot.driveSubsystem.driveForward(0.7, .5);
+    	Robot.driveSubsystem.turnRight(0.6, 100);
+    	Robot.driveSubsystem.driveForward(0.5, 0.2);
     	System.out.println("B");
     }
 

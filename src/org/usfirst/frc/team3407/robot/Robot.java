@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3407.robot;
 
 import org.usfirst.frc.team3407.robot.subsystems.DriveSubsystem;
+import org.usfirst.frc.team3407.robot.subsystems.Feeder;
 import org.usfirst.frc.team3407.robot.subsystems.loader;
 import org.usfirst.frc.team3407.robot.subsystems.linearSlide;
 import org.usfirst.frc.team3407.robot.subsystems.shooterPID;
@@ -74,6 +75,10 @@ public class Robot extends IterativeRobot {
 	 */
     public void autonomousInit() {
         
+    	Feeder.start();
+    	shooterpid.enable();
+    	Robot.shooterpid.setSetpoint(.65);
+    	
         String selected = SmartDashboard.getString("Auto Selector","A");
         System.out.println("SELECTED=" + selected);
         
@@ -100,6 +105,8 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
+    	Feeder.start();
+    	shooterpid.enable();
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
