@@ -3,7 +3,6 @@ package org.usfirst.frc.team3407.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.*;
-import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team3407.robot.commands.*;
 
@@ -22,7 +21,8 @@ public class OI {
 	public static Joystick stick = new Joystick(0);
 	public static Joystick stick2 = new Joystick(1);
 	
-	public static JoystickButton startShooter = new JoystickButton(stick, 6);
+	public static JoystickButton startLoading = new JoystickButton(stick, 5);
+	public static JoystickButton startShooting = new JoystickButton(stick, 6);
 	
 
     // There are a few additional built in buttons you can use. Additionally,
@@ -36,9 +36,9 @@ public class OI {
     	//isArcade = false;
     }
     {
-    	startLoader.whenPressed(new startLoading());
-
-    }
+    	startLoading.whenPressed(new startLoading());
+    	startShooting.whenPressed(new startShooting());
+  }
     
     //// TRIGGERING COMMANDS WITH BUTTONS
     // Once you have a button, it's trivial to bind it to a button in one of

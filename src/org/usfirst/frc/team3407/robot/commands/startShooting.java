@@ -3,8 +3,6 @@ package org.usfirst.frc.team3407.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team3407.robot.Robot;
-import org.usfirst.frc.team3407.robot.subsystems.shooterPID;
-import edu.wpi.first.wpilibj.Encoder;
 /**
  *
  */
@@ -14,7 +12,7 @@ public class startShooting extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.shooterpid);
-    	}
+    }
 
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -22,8 +20,8 @@ public class startShooting extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	shooterpid.enable();
-		shooterpid.setSetpoint(.65);
+    	Robot.shooterpid.enable();
+		Robot.shooterpid.setSetpoint(.65);
     	//Robot.shooterEncoder.start();
     }
 

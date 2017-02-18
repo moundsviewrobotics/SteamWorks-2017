@@ -4,15 +4,18 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDInterface;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow ;
+import edu.wpi.first.wpilibj.VictorSP;
 
 import org.usfirst.frc.team3407.robot.Robot;
-import edu.wpi.first.wpilibj.VictorSP;
+
 /**
  *
  */
 
 public class shooterPID extends PIDSubsystem {
-	public static VictorSP shooterVictor = new VictorSP(9);
+	private VictorSP shooterVictor = new VictorSP(9);
+	private Encoder encoder = new Encoder(1, 2);
 	
     // Initialize your subsystem here
     public shooterPID() {
@@ -25,9 +28,9 @@ public class shooterPID extends PIDSubsystem {
     	
     	setAbsoluteTolerance(0.02);
     	getPIDController().setContinuous(true);
-    	LiveWindow.addActuator("Shooter", "Motor", (VictorSP) shooterVictor);
-	LiveWindow.addSensor("Shooter", "Encoder", (Encoder) Robot.shooterEncoder);
-	LiveWindow.addActuator("Shooter", "PID", getPIDController());
+    	LiveWindow.addActuator("Shooter", "Motor", shooterVictor);
+    	LiveWindow.addSensor("Shooter", "Encoder", encoder);
+    	LiveWindow.addActuator("Shooter", "PID", getPIDController());
     	//PIDController.startLiveWindowMode();
     }
 
@@ -40,7 +43,7 @@ public class shooterPID extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return Robot.shooterEncoder.pidGet();
+        return encoder.pidGet();
     }
 
     protected void usePIDOutput(double output) {

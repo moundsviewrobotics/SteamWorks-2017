@@ -2,7 +2,6 @@ package org.usfirst.frc.team3407.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team3407.robot.Robot;
-import org.usfirst.frc.team3407.robot.subsystems.shooterPID;
 import org.usfirst.frc.team3407.robot.subsystems.loader;
 /**
  *

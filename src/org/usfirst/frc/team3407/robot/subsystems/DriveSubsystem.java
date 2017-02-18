@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team3407.robot.OI;
-import org.usfirst.frc.team3407.robot.Robot;
 import org.usfirst.frc.team3407.robot.commands.DriveCommand;
 
 /**
@@ -22,6 +21,10 @@ public class DriveSubsystem extends Subsystem {
 
     public void initDefaultCommand() {
     	setDefaultCommand(new DriveCommand());
+    }
+    
+    public void arcadeDrive(){
+    	drive.arcadeDrive(OI.stick.getY(), OI.stick.getX());	
     }
     
     public void tankDrive(){

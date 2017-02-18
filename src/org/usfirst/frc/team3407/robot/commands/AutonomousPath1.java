@@ -2,7 +2,6 @@ package org.usfirst.frc.team3407.robot.commands;
 
 import org.usfirst.frc.team3407.robot.Robot;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 public class AutonomousPath1 extends Command {
 double startAngle;
