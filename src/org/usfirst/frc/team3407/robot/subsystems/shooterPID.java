@@ -25,7 +25,9 @@ public class shooterPID extends PIDSubsystem {
     	
     	setAbsoluteTolerance(0.02);
     	getPIDController().setContinuous(true);
-    	
+    	LiveWindow.addActuator("Shooter", "Motor", (VictorSP) shooterVictor);
+	LiveWindow.addSensor("Shooter", "Encoder", (Encoder) Robot.shooterEncoder);
+	LiveWindow.addActuator("Shooter", "PID", getPIDController());
     	//PIDController.startLiveWindowMode();
     }
 
