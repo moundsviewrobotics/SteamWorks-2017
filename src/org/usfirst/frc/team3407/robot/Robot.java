@@ -31,7 +31,6 @@ public class Robot extends IterativeRobot {
 	public static linearSlide slide = new linearSlide();
 	public static shooterPID shooterpid = new shooterPID();
 
-	
 	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.2";
 	private static final String SOFTWARE_DATE = "DATE(02/11/17)";
     Command autonomousCommand;
@@ -45,6 +44,8 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putString("DB/String 0", SOFTWARE_VERSION);
         SmartDashboard.putString("DB/String 5", SOFTWARE_DATE); 
 
+        CameraServer server = CameraServer.getInstance();
+        server.startAutomaticCapture("Front", 0);        
         //server.startAutomaticCapture("Back", 1);
     }
 	
