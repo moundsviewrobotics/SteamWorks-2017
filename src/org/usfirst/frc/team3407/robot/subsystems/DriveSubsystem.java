@@ -40,12 +40,12 @@ public class DriveSubsystem extends Subsystem {
     
    public void turnRight(double speed, double time) {
 	   drive.drive(speed, 1);
-	   Timer.delay(time/1000);
+	   Timer.delay(time);
 	   drive.drive(0, 0);
    }
    public void turnLeft(double speed, double time) {
 	   drive.drive(speed, -1);
-	   Timer.delay(time/1000);
+	   Timer.delay(time);
 	   drive.drive(0, 0);
    }
     public void stop(){
