@@ -24,6 +24,7 @@ public class startShooting extends Command {
     protected void execute() {
     	SmartDashboard.putBoolean(OI.SHOOTER_ENGAGED_KEY, true);    	 
     	Robot.shooterpid.enable();
+    	Robot.shooterpid.setSetpoint(.65);
     	//Robot.shooterEncoder.start();
     }
 

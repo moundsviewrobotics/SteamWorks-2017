@@ -21,8 +21,8 @@ public class shooterPID extends PIDSubsystem {
         //                  to
         // enable() - Enables the PID controller.
     	super("shooterPID", 0.25, 1.5, 0.5);
-    	
-		setSetpoint(.5);
+    	setSetpoint(0.65);
+		
     	setAbsoluteTolerance(0.02);
     	getPIDController().setContinuous(true);
     	LiveWindow.addActuator("Shooter", "Motor", shooterVictor);

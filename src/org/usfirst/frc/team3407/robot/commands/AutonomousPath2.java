@@ -23,8 +23,9 @@ public class AutonomousPath2 extends Command {
     protected void execute() {
     	Robot.driveSubsystem.driveForward(0.7, 1.2);
     	Robot.driveSubsystem.turnLeft(1, 1);
+    	Timer.delay(5);
     	loader.shoot();
-    	Timer.delay(2);
+    	Timer.delay(7);
     	loader.stopShooting();
     	
     	System.out.println("B");
