@@ -1,22 +1,21 @@
-
 package org.usfirst.frc.team3407.robot;
 
 import org.usfirst.frc.team3407.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team3407.robot.subsystems.loader;
 import org.usfirst.frc.team3407.robot.subsystems.linearSlide;
-import org.usfirst.frc.team3407.robot.subsystems.*;
+
 import org.usfirst.frc.team3407.robot.commands.AutonomousPath1;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPath2;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.VictorSP;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.PIDController;
 
 
 /**
@@ -32,13 +31,12 @@ public class Robot extends IterativeRobot {
 	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
 	public static loader ballLoader = new loader();
 	public static linearSlide slide = new linearSlide();
-	//public static shooter shoot = new shooter();
-	public static Encoder shooterEncoder = new Encoder(4, 5);
-	public static shooterPID shooterpid = new shooterPID();
+
 	
 	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.2";
 	private static final String SOFTWARE_DATE = "DATE(02/11/17)";
     Command autonomousCommand;
+r
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -47,9 +45,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI(); 
         SmartDashboard.putString("DB/String 0", SOFTWARE_VERSION);
         SmartDashboard.putString("DB/String 5", SOFTWARE_DATE); 
-        
-        CameraServer server = CameraServer.getInstance();
-        server.startAutomaticCapture("Front", 0);
+
         //server.startAutomaticCapture("Back", 1);
     }
 	
@@ -122,6 +118,17 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
+    	
+    	LiveWindow.addActuator("Shooter",  "motor", shooterMotor);
+    	LiveWindow.addSensor("Shooter",  "sensor", shooterSensor);
         LiveWindow.run();
+        
+        //while(true) {
+        //	Thread.sleep(50);
+        	double speed = Math.min(SmartDashboard.getNumber("DB/Slider 0", 0.2), 1.0);
+        	System.out.println("Setting" + speed);
+        	shooterMotor.set(speed);
+        	SmartDashboard.putNumber("Encoder", shooterSensor.getRate());
+        //}
     }
 }

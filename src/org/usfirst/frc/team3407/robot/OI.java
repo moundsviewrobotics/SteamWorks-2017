@@ -1,3 +1,4 @@
+
 package org.usfirst.frc.team3407.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -22,17 +23,12 @@ public class OI {
 	public static Joystick stick2 = new Joystick(1);
 	
 	public static JoystickButton startShooter = new JoystickButton(stick, 6);
-	public static JoystickButton stopLoader = new JoystickButton(stick, 7);
-	public static JoystickButton left = new JoystickButton(stick, 8);
-	public static JoystickButton right = new JoystickButton(stick, 9);
-	public static JoystickButton startLoader = new JoystickButton(stick, 10);
-	public static JoystickButton stopShooter = new JoystickButton(stick, 11);
-	
 	
 
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
     // commands the same as any other Button.
+
 	public static void toArcade(){
     	//isArcade = true;
     }
@@ -41,11 +37,7 @@ public class OI {
     }
     {
     	startLoader.whenPressed(new startLoading());
-    	stopLoader.whenPressed(new stopLoading());
-    	startShooter.whenPressed(new shooterCommand());
-    	
-    	right.whenPressed(new slideRight());
-    	left.whenPressed(new slideLeft());
+
     }
     
     //// TRIGGERING COMMANDS WITH BUTTONS
@@ -60,4 +52,3 @@ public class OI {
     // the button is released.
     // button.whileHeld(new ExampleCommand());
 }
-
