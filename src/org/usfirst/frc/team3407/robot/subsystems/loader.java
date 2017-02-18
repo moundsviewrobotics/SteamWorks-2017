@@ -13,8 +13,6 @@ public class loader extends Subsystem {
     // here. Call these from Commands.
 	public static SpeedController loadShooter = new VictorSP(8);
 	
-	
-	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
