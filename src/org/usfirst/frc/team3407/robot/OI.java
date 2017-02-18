@@ -42,7 +42,7 @@ public class OI {
     	startFeeder.whenPressed(new StartFeeder());
     	stopFeeder.whenPressed(new StopFeeder());
     	
-    	toArcade(); 
+    	toTank(); 
     }
 
     public static boolean isArcade() { 

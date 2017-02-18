@@ -77,7 +77,6 @@ public class Robot extends IterativeRobot {
         
     	Feeder.start();
     	shooterpid.enable();
-    	Robot.shooterpid.setSetpoint(.65);
     	
         String selected = SmartDashboard.getString("Auto Selector","A");
         System.out.println("SELECTED=" + selected);

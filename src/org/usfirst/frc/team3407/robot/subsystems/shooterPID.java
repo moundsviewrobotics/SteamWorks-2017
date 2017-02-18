@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3407.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow ;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -21,7 +22,7 @@ public class shooterPID extends PIDSubsystem {
         // enable() - Enables the PID controller.
     	super("shooterPID", 0.25, 1.5, 0.5);
     	
-    	
+		setSetpoint(.5);
     	setAbsoluteTolerance(0.02);
     	getPIDController().setContinuous(true);
     	LiveWindow.addActuator("Shooter", "Motor", shooterVictor);

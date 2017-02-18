@@ -18,9 +18,9 @@ double startAngle;
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {;
     System.out.println("A");
-    Robot.driveSubsystem.driveForward(0.8, 1.5); //speed (0-1 0 being stopped, 1 being full speed) timer(seconds)
-    //Robot.driveSubsystem.turnRight(0.8, 100); //times for "turnRight" & "turnLeft" is are in miliseconds
-    //Robot.driveSubsystem.turnLeft(0.8, 100);
+    Robot.driveSubsystem.driveForward(-0.8, 2); //speed (0-1 0 being stopped, 1 being full speed) timer(seconds)
+    //Robot.driveSubsystem.turnRight(0.8, 1);
+    //Robot.driveSubsystem.turnLeft(0.8, 1);
     Robot.driveSubsystem.stop(); //shouldn't be needed, but better safe than sorry
     }
 
