@@ -3,7 +3,7 @@ package org.usfirst.frc.team3407.robot;
 import org.usfirst.frc.team3407.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team3407.robot.subsystems.Feeder;
 import org.usfirst.frc.team3407.robot.subsystems.loader;
-import org.usfirst.frc.team3407.robot.subsystems.linearSlide;
+//import org.usfirst.frc.team3407.robot.subsystems.linearSlide;
 import org.usfirst.frc.team3407.robot.subsystems.shooterPID;
 
 import org.usfirst.frc.team3407.robot.commands.AutonomousPath1;
@@ -76,8 +76,8 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         
     	Feeder.start();
-    	shooterpid.enable();
-    	//shooterpid.setSetpoint(.65);
+    	//shooterpid.enable();
+    	shooterpid.setMotorSpeed(.65);
         String selected = SmartDashboard.getString("Auto Selector","A");
         System.out.println("SELECTED=" + selected);
         
@@ -108,8 +108,8 @@ public class Robot extends IterativeRobot {
 
     public void teleopInit() {
     	Feeder.start();
-    	shooterpid.enable();
-    	shooterpid.setSetpoint(0.65);
+    	//shooterpid.enable();
+    	shooterpid.setMotorSpeed(0.65);
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
@@ -124,12 +124,13 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
     }
     
+    
     /**
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
     	
-    	shooterpid.enable();
+    	shooterpid.test();
         LiveWindow.run();
     }
 }
