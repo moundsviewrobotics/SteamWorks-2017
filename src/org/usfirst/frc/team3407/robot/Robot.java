@@ -6,8 +6,9 @@ import org.usfirst.frc.team3407.robot.subsystems.loader;
 //import org.usfirst.frc.team3407.robot.subsystems.linearSlide;
 import org.usfirst.frc.team3407.robot.subsystems.shooterPID;
 
-import org.usfirst.frc.team3407.robot.commands.AutonomousPath1;
-import org.usfirst.frc.team3407.robot.commands.AutonomousPath2;
+import org.usfirst.frc.team3407.robot.commands.AutonomousPos1;
+import org.usfirst.frc.team3407.robot.commands.AutonomousPos2;
+import org.usfirst.frc.team3407.robot.commands.AutonomousPos3;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -81,18 +82,24 @@ public class Robot extends IterativeRobot {
         String selected = SmartDashboard.getString("Auto Selector","A");
         System.out.println("SELECTED=" + selected);
         
-        if(selected .equals("A")) {
-        	autonomousCommand = new AutonomousPath1();
-        }
-        else if(selected .equals("pos1B")) {
-        	autonomousCommand = new AutonomousPath2(true);
+        if(selected .equals("pos1B")) {
+        	autonomousCommand = new AutonomousPos1(true);
         }
         else if(selected .equals("pos1R")){
-        	autonomousCommand = new AutonomousPath2(false);
+        	autonomousCommand = new AutonomousPos1(false);
+        }
+        else if(selected .equals("pos2B")) {
+        	autonomousCommand = new AutonomousPos2(true);
+        }
+        else if(selected .equals("pos2R")){
+        	autonomousCommand = new AutonomousPos2(false);
+        }
+        else if(selected .equals("pos3")) {
+        	autonomousCommand = new AutonomousPos3();
         }
         else {
-        	autonomousCommand = new AutonomousPath1();
-        }
+        	autonomousCommand = new AutonomousPos3();
+        }//TODO: make this a switch statement
         //note to future teams: don't use sendablechooser	
         System.out.println(autonomousCommand);
     	// schedule the autonomous command (example)

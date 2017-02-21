@@ -74,7 +74,6 @@ public class shooterPID extends PIDSubsystem {
     	double speedAdjust = output / MAX_RATE;
     	speed += speedAdjust;
     	SmartDashboard.putString("DB/String 4", Double.toString(output));
-    	SmartDashboard.putDouble("DB/Slider 0", speed);
     	shooterVictor.set(speed);  	
     }
 }

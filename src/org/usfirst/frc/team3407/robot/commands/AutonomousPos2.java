@@ -5,38 +5,42 @@ import org.usfirst.frc.team3407.robot.subsystems.loader;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-
 /**
  *
  */
-public class AutonomousPath2 extends Command {
+public class AutonomousPos2 extends Command {
 
-    public AutonomousPath2(boolean mirror) {
+	public boolean mirror;
+
+	public AutonomousPos2(boolean mirror) {
     	requires(Robot.driveSubsystem);	
     	this.mirror = mirror;
     }
-    private boolean mirror;
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveSubsystem.driveForward(0.7, 1.2);
-    	if(mirror) {
+    	Robot.driveSubsystem.driveForward(0.5, 1);
+    	Robot.driveSubsystem.driveForward(0.5, 0.5);
+    	if(mirror){
     		Robot.driveSubsystem.turnLeft(1, 1);
+    		Robot.driveSubsystem.driveForward(0.7, 1);
+    		Robot.driveSubsystem.turnRight(1, 1);
     	}
     	else {
     		Robot.driveSubsystem.turnRight(1, 1);
+    		Robot.driveSubsystem.driveForward(0.7, 1);
+    		Robot.driveSubsystem.turnLeft(1, 1);
     	}
-    	Timer.delay(5);
+    	Robot.driveSubsystem.driveForward(0.7, 1.1);
+    	Robot.driveSubsystem.turnRight(1, 2);
     	loader.shoot();
-    	Timer.delay(7);
+    	Timer.delay(4);
     	loader.stopShooting();
     	
-    	System.out.println("B");
     }
 
     // Make this return true when this Command no longer needs to run execute()

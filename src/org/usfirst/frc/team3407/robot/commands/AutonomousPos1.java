@@ -1,27 +1,40 @@
 package org.usfirst.frc.team3407.robot.commands;
 
 import org.usfirst.frc.team3407.robot.Robot;
+import org.usfirst.frc.team3407.robot.subsystems.loader;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-public class AutonomousPath1 extends Command {
-double startAngle;
-	
-    public AutonomousPath1() {
-        // Use requires() here to declare subsystem dependencies
+
+
+public class AutonomousPos1 extends Command {
+
+    public AutonomousPos1(boolean mirror) {
     	requires(Robot.driveSubsystem);	
+    	this.mirror = mirror;
     }
+    private boolean mirror;
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {;
-    System.out.println("A");
-    Robot.driveSubsystem.driveForward(-0.8, 2); //speed (0-1 0 being stopped, 1 being full speed) timer(seconds)
-    //Robot.driveSubsystem.turnRight(0.8, 1);
-    //Robot.driveSubsystem.turnLeft(0.8, 1);
-    Robot.driveSubsystem.stop(); //shouldn't be needed, but better safe than sorry
+    protected void execute() {
+    	Robot.driveSubsystem.driveForward(0.7, 1.2);
+    	if(mirror) {
+    		Robot.driveSubsystem.turnLeft(1, 1);
+    	}
+    	else {
+    		Robot.driveSubsystem.turnRight(1, 1);
+    	}
+    	Timer.delay(5);
+    	loader.shoot();
+    	Timer.delay(7);
+    	loader.stopShooting();
+    	
+    	System.out.println("B");
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,7 +44,6 @@ double startAngle;
 
     // Called once after isFinished returns true
     protected void end() {
-    	
     }
 
     // Called when another command which requires one or more of the same
