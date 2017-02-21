@@ -23,10 +23,10 @@ public class DriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(OI.isArcade()) {
-    		Robot.driveSubsystem.arcadeDrive();
+    			Robot.driveSubsystem.arcadeDrive();
     	}
     	else {
-    		Robot.driveSubsystem.tankDrive();
+    			Robot.driveSubsystem.tankDrive();
     	}
     }
 

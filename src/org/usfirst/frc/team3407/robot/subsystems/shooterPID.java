@@ -18,15 +18,17 @@ public class shooterPID extends PIDSubsystem {
 	private VictorSP shooterVictor = new VictorSP(5);
 	private Encoder encoder = new Encoder(2 /* Channel A */, 1 /* Channel B */);
 	
+	private double speed;
+	
     // Initialize your subsystem here
     public shooterPID() {
+    	
         // Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
     	super("shooterPID", 0.25, 1.5, 0.5);
     	setSetpoint(1000);
-    	getPIDController().
 		
     	setAbsoluteTolerance(0.02);
     	//getPIDController().setContinuous(true);
@@ -42,6 +44,7 @@ public class shooterPID extends PIDSubsystem {
     }
 
     public void setMotorSpeed(double speed) {
+    	this.speed = speed;
     	shooterVictor.set(speed);
     }
     
@@ -68,7 +71,8 @@ public class shooterPID extends PIDSubsystem {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
     	// Normalize revolutions to 0-1 scale for moter speed
-    	double speed = output / MAX_RATE;
+    	double speedAdjust = output / MAX_RATE;
+    	speed += speedAdjust;
     	SmartDashboard.putString("DB/String 4", Double.toString(output));
     	SmartDashboard.putDouble("DB/Slider 0", speed);
     	shooterVictor.set(speed);  	

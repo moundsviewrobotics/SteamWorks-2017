@@ -24,23 +24,25 @@ public class OI {
 	public static Joystick stick = new Joystick(0);
 	public static Joystick stick2 = new Joystick(1);
 	
-	public static JoystickButton startLoading = new JoystickButton(stick, 1);
-	public static JoystickButton stopLoading = new JoystickButton(stick, 2);
-
+	public static JoystickButton loadingButton = new JoystickButton(stick, 1);
 	public static JoystickButton startFeeder = new JoystickButton(stick, 3);
 	public static JoystickButton stopFeeder = new JoystickButton(stick, 4);
 
 	public static JoystickButton startShooting = new JoystickButton(stick, 5);
 	public static JoystickButton stopShooting = new JoystickButton(stick, 6);
 	
+	public static JoystickButton reverseDrive = new JoystickButton(stick2, 1);
+	
     static {
-    	startLoading.whenActive(new startLoading());
+    	loadingButton.whenActive(new startLoading());
+    	loadingButton.whenInactive(new stopLoading());
+    	
     	startShooting.whenPressed(new startShooting());
-    	stopLoading.whenPressed(new stopLoading());
     	stopShooting.whenPressed(new stopShooting());
     	
     	startFeeder.whenPressed(new StartFeeder());
     	stopFeeder.whenPressed(new StopFeeder());
+ 
     	
     	toTank(); 
     }

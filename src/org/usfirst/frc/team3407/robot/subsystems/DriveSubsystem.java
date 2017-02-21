@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team3407.robot.OI;
 import org.usfirst.frc.team3407.robot.commands.DriveCommand;
-
+import org.usfirst.frc.team3407.robot.commands.ReverseDrive;
 /**
  *
  */
@@ -24,11 +24,12 @@ public class DriveSubsystem extends Subsystem {
     }
     
     public void arcadeDrive(){
-    	drive.arcadeDrive(OI.stick.getY(), -OI.stick.getX());	
+    	drive.arcadeDrive(OI.stick.getY()*.8, -OI.stick.getX()*.8);	
     }
-    
+
     public void tankDrive(){
-    	drive.tankDrive(OI.stick.getY(), OI.stick2.getY());	
+    	drive.tankDrive(OI.stick.getY() *.8, OI.stick2.getY()*.8); 
+    	
     }
     
 
