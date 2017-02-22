@@ -14,7 +14,9 @@ import edu.wpi.first.wpilibj.VictorSP;
 
 public class shooterPID extends PIDSubsystem {
 	
-	private static final double MAX_RATE = 1800;
+	public static final double DEFAULT_SET_POINT = 1500;
+	
+	//private static final double MAX_RATE = 1800;
 	
 	private VictorSP shooterVictor = new VictorSP(5);
 	private Encoder encoder = new Encoder(2 /* Channel A */, 1 /* Channel B */);
@@ -30,7 +32,7 @@ public class shooterPID extends PIDSubsystem {
         // enable() - Enables the PID controller.
     	super("shooterPID", 0.0001, 0.00, 0.0005);
     	
-    	setSetpoint(1500);
+    	setSetpoint(DEFAULT_SET_POINT);
 		
     	setAbsoluteTolerance(100);
     	PIDController controller = getPIDController();
@@ -55,23 +57,16 @@ public class shooterPID extends PIDSubsystem {
     	LiveWindow.addActuator("Shooter", "Motor", shooterVictor);
     	LiveWindow.addSensor("Shooter", "Encoder", encoder);
     	LiveWindow.addActuator("Shooter", "PID", getPIDController());
-
     	//SmartDashboard.putString("DB/String 8", Double.toString(encoder.getRate()));
     }
     
     protected double returnPIDInput() {
-        // Return your input value for the PID loop
-        // e.g. a sensor, like a potentiometer:
-        // yourPot.getAverageVoltage() / kYourMaxVoltage;
     	double rate = encoder.getRate();
     	SmartDashboard.putString("DB/String 3", Double.toString(rate));
         return rate;
     }
 
     protected void usePIDOutput(double output) {
-        // Use output to drive your system, like a motor
-        // e.g. yourMotor.set(output);
-    	// Normalize revolutions to 0-1 scale for moter speed
     	double speedAdjust = output;
      	SmartDashboard.putString("DB/String 4", Double.toString(output));
     	SmartDashboard.putString("DB/String 7", Double.toString(getPIDController().getAvgError()));

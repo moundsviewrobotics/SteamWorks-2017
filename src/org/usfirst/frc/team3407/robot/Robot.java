@@ -33,8 +33,8 @@ public class Robot extends IterativeRobot {
 	//public static linearSlide slide = new linearSlide();
 	public static shooterPID shooterpid = new shooterPID();
 
-	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.3";
-	private static final String SOFTWARE_DATE = "DATE(02/17/17)";
+	private static final String SOFTWARE_VERSION = "Steamworks-2017-1.0";
+	private static final String SOFTWARE_DATE = "DATE(02/21/17)";
     Command autonomousCommand;
 
     /**
@@ -66,7 +66,6 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 	}
 
-	//autochooser
 	/**
 	 * This autonomous (along with the chooser code above) shows how to select between different autonomous modes
 	 * using the dashboard. The sendable chooser code works with the Java SmartDashboard. If you prefer the LabVIEW
@@ -79,8 +78,8 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         
     	Feeder.start();
-    	//shooterpid.enable();
-    	shooterpid.setMotorSpeed(.65);
+    	shooterpid.setMotorSpeed(.80);
+    	shooterpid.enable();
         String selected = SmartDashboard.getString("Auto Selector","A");
         System.out.println("SELECTED=" + selected);
         
@@ -138,11 +137,11 @@ public class Robot extends IterativeRobot {
     	shooterpid.setMotorSpeed(.80);
     	//shooterpid.setSetpoint(1500);
     }
+    
     /**
      * This function is called periodically during test mode
      */
-    public void testPeriodic() {
-    	
+    public void testPeriodic() {	
     	shooterpid.test();
         LiveWindow.run();
     }
