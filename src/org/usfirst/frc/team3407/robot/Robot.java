@@ -46,6 +46,8 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putString("DB/String 0", SOFTWARE_VERSION);
         SmartDashboard.putString("DB/String 5", SOFTWARE_DATE); 
 
+        SmartDashboard.putData(shooterpid);
+        
         CameraServer server = CameraServer.getInstance();
         server.startAutomaticCapture("Front", 0);        
         //server.startAutomaticCapture("Back", 1);
@@ -115,7 +117,7 @@ public class Robot extends IterativeRobot {
 
     public void teleopInit() {
     	Feeder.start();
-    	shooterpid.setMotorSpeed(0.65);
+    	shooterpid.setMotorSpeed(0.8);
     	shooterpid.enable();
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
@@ -132,6 +134,10 @@ public class Robot extends IterativeRobot {
     }
     
     
+    public void testInit() {
+    	shooterpid.setMotorSpeed(.80);
+    	//shooterpid.setSetpoint(1500);
+    }
     /**
      * This function is called periodically during test mode
      */

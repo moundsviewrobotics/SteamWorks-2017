@@ -3,6 +3,7 @@ package org.usfirst.frc.team3407.robot.subsystems;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow ;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -27,15 +28,16 @@ public class shooterPID extends PIDSubsystem {
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-    	super("shooterPID", 0.25, 1.5, 0.5);
-    	setSetpoint(1000);
+    	super("shooterPID", 0.0001, 0.00, 0.0005);
+    	
+    	setSetpoint(1500);
 		
-    	setAbsoluteTolerance(0.02);
-    	//getPIDController().setContinuous(true);
-    	//LiveWindow.addActuator("Shooter", "Motor", shooterVictor);
-    	//LiveWindow.addSensor("Shooter", "Encoder", encoder);
-    	//LiveWindow.addActuator("Shooter", "PID", getPIDController());
-    	//PIDController.startLiveWindowMode();
+    	setAbsoluteTolerance(100);
+    	PIDController controller = getPIDController();
+       	controller.setContinuous(false);
+        LiveWindow.addActuator("Shooter", "Motor", shooterVictor);
+    	LiveWindow.addSensor("Shooter", "Encoder", encoder);
+    	LiveWindow.addActuator("Shooter", "PID", getPIDController());
     }
 
     public void initDefaultCommand() {
@@ -44,18 +46,17 @@ public class shooterPID extends PIDSubsystem {
     }
 
     public void setMotorSpeed(double speed) {
-    	this.speed = speed;
-    	shooterVictor.set(speed);
+    	this.speed = Math.max(0.0,  speed);
+    	this.speed = Math.min(1,  this.speed);
+    	shooterVictor.set(this.speed);
     }
     
     public void test() {
     	LiveWindow.addActuator("Shooter", "Motor", shooterVictor);
     	LiveWindow.addSensor("Shooter", "Encoder", encoder);
     	LiveWindow.addActuator("Shooter", "PID", getPIDController());
-    	String speed = SmartDashboard.getString("DB/String 7", "0.5");
-    	shooterVictor.set(Double.parseDouble(speed));
 
-    	SmartDashboard.putString("DB/String 8", Double.toString(encoder.getRate()));
+    	//SmartDashboard.putString("DB/String 8", Double.toString(encoder.getRate()));
     }
     
     protected double returnPIDInput() {
@@ -71,9 +72,10 @@ public class shooterPID extends PIDSubsystem {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
     	// Normalize revolutions to 0-1 scale for moter speed
-    	double speedAdjust = output / MAX_RATE;
-    	speed += speedAdjust;
-    	SmartDashboard.putString("DB/String 4", Double.toString(output));
-    	shooterVictor.set(speed);  	
+    	double speedAdjust = output;
+     	SmartDashboard.putString("DB/String 4", Double.toString(output));
+    	SmartDashboard.putString("DB/String 7", Double.toString(getPIDController().getAvgError()));
+    	SmartDashboard.putString("DB/String 9", Double.toString(speed));
+    	setMotorSpeed(speed + speedAdjust);  	
     }
 }
