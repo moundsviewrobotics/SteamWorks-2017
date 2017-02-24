@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team3407.robot.OI;
 import org.usfirst.frc.team3407.robot.commands.DriveCommand;
-import org.usfirst.frc.team3407.robot.commands.ReverseDrive;
 /**
  *
  */

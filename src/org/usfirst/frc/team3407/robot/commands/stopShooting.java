@@ -5,15 +5,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team3407.robot.OI;
 import org.usfirst.frc.team3407.robot.Robot;
-import org.usfirst.frc.team3407.robot.subsystems.loader;
+
 /**
  *
  */
 public class stopShooting extends Command {
 
     public stopShooting() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Robot.shooterpid);
     }
 
@@ -25,7 +23,7 @@ public class stopShooting extends Command {
     protected void execute() {
     	
     	SmartDashboard.putBoolean(OI.SHOOTER_ENGAGED_KEY, false);    	 
-    	loader.stopShooting();
+    	Robot.shooterpid.disable();
     }
 
     // Make this return true when this Command no longer needs to run execute()

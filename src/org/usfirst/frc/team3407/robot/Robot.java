@@ -6,8 +6,9 @@ import org.usfirst.frc.team3407.robot.subsystems.loader;
 //import org.usfirst.frc.team3407.robot.subsystems.linearSlide;
 import org.usfirst.frc.team3407.robot.subsystems.shooterPID;
 
-import org.usfirst.frc.team3407.robot.commands.AutonomousPath1;
-import org.usfirst.frc.team3407.robot.commands.AutonomousPath2;
+import org.usfirst.frc.team3407.robot.commands.AutonomousPos1;
+import org.usfirst.frc.team3407.robot.commands.AutonomousPos2;
+import org.usfirst.frc.team3407.robot.commands.AutonomousPos3;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -32,8 +33,8 @@ public class Robot extends IterativeRobot {
 	//public static linearSlide slide = new linearSlide();
 	public static shooterPID shooterpid = new shooterPID();
 
-	private static final String SOFTWARE_VERSION = "Steamworks-2017-0.3";
-	private static final String SOFTWARE_DATE = "DATE(02/17/17)";
+	private static final String SOFTWARE_VERSION = "Steamworks-2017-1.0";
+	private static final String SOFTWARE_DATE = "DATE(02/21/17)";
     Command autonomousCommand;
 
     /**
@@ -45,6 +46,8 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putString("DB/String 0", SOFTWARE_VERSION);
         SmartDashboard.putString("DB/String 5", SOFTWARE_DATE); 
 
+        SmartDashboard.putData(shooterpid);
+        
         CameraServer server = CameraServer.getInstance();
         server.startAutomaticCapture("Front", 0);        
         //server.startAutomaticCapture("Back", 1);
@@ -63,7 +66,6 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 	}
 
-	//autochooser
 	/**
 	 * This autonomous (along with the chooser code above) shows how to select between different autonomous modes
 	 * using the dashboard. The sendable chooser code works with the Java SmartDashboard. If you prefer the LabVIEW
@@ -76,23 +78,29 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         
     	Feeder.start();
-    	//shooterpid.enable();
-    	shooterpid.setMotorSpeed(.65);
+    	shooterpid.setMotorSpeed(.80);
+    	shooterpid.enable();
         String selected = SmartDashboard.getString("Auto Selector","A");
         System.out.println("SELECTED=" + selected);
         
-        if(selected .equals("A")) {
-        	autonomousCommand = new AutonomousPath1();
-        }
-        else if(selected .equals("pos1B")) {
-        	autonomousCommand = new AutonomousPath2(true);
+        if(selected .equals("pos1B")) {
+        	autonomousCommand = new AutonomousPos1(true);
         }
         else if(selected .equals("pos1R")){
-        	autonomousCommand = new AutonomousPath2(false);
+        	autonomousCommand = new AutonomousPos1(false);
+        }
+        else if(selected .equals("pos2B")) {
+        	autonomousCommand = new AutonomousPos2(true);
+        }
+        else if(selected .equals("pos2R")){
+        	autonomousCommand = new AutonomousPos2(false);
+        }
+        else if(selected .equals("pos3")) {
+        	autonomousCommand = new AutonomousPos3();
         }
         else {
-        	autonomousCommand = new AutonomousPath1();
-        }
+        	autonomousCommand = new AutonomousPos3();
+        }//TODO: make this a switch statement
         //note to future teams: don't use sendablechooser	
         System.out.println(autonomousCommand);
     	// schedule the autonomous command (example)
@@ -108,7 +116,7 @@ public class Robot extends IterativeRobot {
 
     public void teleopInit() {
     	Feeder.start();
-    	shooterpid.setMotorSpeed(0.65);
+    	shooterpid.setMotorSpeed(0.8);
     	shooterpid.enable();
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
@@ -125,11 +133,15 @@ public class Robot extends IterativeRobot {
     }
     
     
+    public void testInit() {
+    	shooterpid.setMotorSpeed(.80);
+    	//shooterpid.setSetpoint(1500);
+    }
+    
     /**
      * This function is called periodically during test mode
      */
-    public void testPeriodic() {
-    	
+    public void testPeriodic() {	
     	shooterpid.test();
         LiveWindow.run();
     }

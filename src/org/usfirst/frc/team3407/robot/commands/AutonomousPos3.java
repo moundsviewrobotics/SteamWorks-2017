@@ -1,19 +1,19 @@
 package org.usfirst.frc.team3407.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team3407.robot.OI;
 import org.usfirst.frc.team3407.robot.Robot;
+import org.usfirst.frc.team3407.robot.subsystems.loader;
+
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Command;
+
 /**
  *
  */
-public class startShooting extends Command {
+public class AutonomousPos3 extends Command {
 
-    public startShooting() {
+    public AutonomousPos3() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.shooterpid);
     }
 
     // Called just before this Command runs the first time
@@ -22,13 +22,17 @@ public class startShooting extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putBoolean(OI.SHOOTER_ENGAGED_KEY, true);    	 
-    	Robot.shooterpid.enable();
+    	Robot.driveSubsystem.driveForward(1, 1.2);
+    	Robot.driveSubsystem.turnRight(1, 1.9);
+    	Timer.delay(3.5);
+    	loader.shoot();
+    	Timer.delay(8);
+    	loader.stopShooting();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
