@@ -35,6 +35,7 @@ public class Robot extends IterativeRobot {
 	public static shooterPID shooterpid = new shooterPID();
 	
 	private static VisionProcessor visionProcessor = new VisionProcessor();
+	private UsbCamera camera;
 
 	private static final String SOFTWARE_VERSION = "Steamworks-2017-1.0";
 	private static final String SOFTWARE_DATE = "DATE(02/21/17)";
@@ -52,10 +53,8 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData(shooterpid);
         
         CameraServer server = CameraServer.getInstance();
-        UsbCamera camera = server.startAutomaticCapture("Front", 0);        
+        camera = server.startAutomaticCapture("Front", 0);        
         //server.startAutomaticCapture("Back", 1);
-        
-        visionProcessor.start(camera);
     }
 	
 	/**
@@ -64,7 +63,7 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-
+        visionProcessor.stop();
     }
 	
 	public void disabledPeriodic() {
@@ -137,10 +136,11 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
     }
     
-    
     public void testInit() {
     	//shooterpid.setMotorSpeed(.80);
     	//shooterpid.setSetpoint(1500);
+        
+        visionProcessor.start(camera);
     }
     
     /**
