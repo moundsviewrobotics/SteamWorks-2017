@@ -5,11 +5,12 @@ import org.usfirst.frc.team3407.robot.subsystems.Feeder;
 import org.usfirst.frc.team3407.robot.subsystems.loader;
 //import org.usfirst.frc.team3407.robot.subsystems.linearSlide;
 import org.usfirst.frc.team3407.robot.subsystems.shooterPID;
-
+import org.usfirst.frc.team3407.robot.vision.VisionProcessor;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPos1;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPos2;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPos3;
 
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -32,6 +33,8 @@ public class Robot extends IterativeRobot {
 	public static loader ballLoader = new loader();
 	//public static linearSlide slide = new linearSlide();
 	public static shooterPID shooterpid = new shooterPID();
+	
+	private static VisionProcessor visionProcessor = new VisionProcessor();
 
 	private static final String SOFTWARE_VERSION = "Steamworks-2017-1.0";
 	private static final String SOFTWARE_DATE = "DATE(02/21/17)";
@@ -49,8 +52,10 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData(shooterpid);
         
         CameraServer server = CameraServer.getInstance();
-        server.startAutomaticCapture("Front", 0);        
+        UsbCamera camera = server.startAutomaticCapture("Front", 0);        
         //server.startAutomaticCapture("Back", 1);
+        
+        visionProcessor.start(camera);
     }
 	
 	/**
@@ -134,7 +139,7 @@ public class Robot extends IterativeRobot {
     
     
     public void testInit() {
-    	shooterpid.setMotorSpeed(.80);
+    	//shooterpid.setMotorSpeed(.80);
     	//shooterpid.setSetpoint(1500);
     }
     
@@ -142,7 +147,11 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {	
-    	shooterpid.test();
+    	//shooterpid.test();
+    	
+    	Object target = visionProcessor.getTargetCenter();
+        SmartDashboard.putString("DB/String 0", (target == null) ? "<None>" : target.toString());
+;
         LiveWindow.run();
     }
 }
