@@ -149,7 +149,7 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {	
     	//shooterpid.test();
     	
-    	Object target = visionProcessor.getTargetCenter();
+    	Object target = visionProcessor.getTargetEvaluator().getTargetCenter();
         SmartDashboard.putString("DB/String 0", (target == null) ? "<None>" : target.toString());
 ;
         LiveWindow.run();
