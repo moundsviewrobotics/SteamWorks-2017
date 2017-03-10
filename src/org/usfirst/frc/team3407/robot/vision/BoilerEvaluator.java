@@ -39,9 +39,7 @@ public class BoilerEvaluator extends TargetEvaluator {
 			}
 		}
 			
-		if (upper != null) {
-			setTarget(new Rect(upper.x, upper.y, upper.width, lower.height + (lower.y - upper.y)));
-		}
+		setTarget((upper == null) ? null : new Rect(upper.x, upper.y, upper.width, lower.height + (lower.y - upper.y)));
 		
 		return (upper != null);
 	}
