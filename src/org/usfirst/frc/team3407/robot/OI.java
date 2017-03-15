@@ -17,6 +17,12 @@ public class OI {
 	private static final String ARCADE_MODE_KEY = "DB/Button 1";
 	private static final String ARCADE_DISPLAY_KEY = "DB/String 2";
 	
+	public static final String REVERSE_MODE_KEY = "DB/Button 2";
+	public static final String REVERSE_DISPLAY_KEY = "DB/String 2";
+	
+	public static final String SLOW_MODE_KEY = "DB/Button 3";
+	public static final String SLOW_DISPLAY_KEY = "DB/String 3";
+	
 	public static final String LOADER_ENGAGED_KEY = "DB/LED 0";
 	public static final String FEEDER_ENGAGED_KEY = "DB/LED 1";
 	public static final String SHOOTER_ENGAGED_KEY = "DB/LED 2";
@@ -66,4 +72,26 @@ public class OI {
     private static void setArcadeDisplay(boolean mode) { 
     	SmartDashboard.putString(ARCADE_DISPLAY_KEY,  (mode ? "Arcade" : "Tank") + " Drive Mode");    	 
     } 
+    
+    
+    public static boolean isReverse() {
+    	boolean reverse = SmartDashboard.getBoolean(REVERSE_MODE_KEY, false);
+    	setReverseDisplay(reverse);
+    	return reverse;
+    }
+    
+    public static void noReverse(){
+    	SmartDashboard.putBoolean(REVERSE_MODE_KEY, false);
+    	setReverseDisplay(false);
+    }
+    
+    public static void toReverse() {
+    	SmartDashboard.putBoolean(REVERSE_MODE_KEY, true);
+    	setReverseDisplay(true);
+    }
+    
+    public static void setReverseDisplay(boolean mode){
+    	SmartDashboard.putString(REVERSE_DISPLAY_KEY, (mode ? "reverse" : "forward"));
+    }
+    
 }
