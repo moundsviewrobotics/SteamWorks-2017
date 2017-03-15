@@ -94,4 +94,24 @@ public class OI {
     	SmartDashboard.putString(REVERSE_DISPLAY_KEY, (mode ? "reverse" : "forward"));
     }
     
+    
+    public static boolean isTankSlow(){
+    	boolean slow = SmartDashboard.getBoolean(SLOW_MODE_KEY, false);
+    	setSlowDisplay(slow);
+    	return slow;
+    }
+    
+    public static void toSlow(){
+    	SmartDashboard.putBoolean(SLOW_MODE_KEY, true);
+    	setSlowDisplay(true);
+    }
+    
+    public static void noSlow(){
+    	SmartDashboard.putBoolean(SLOW_MODE_KEY, false);
+    	setSlowDisplay(false);
+    }
+    
+    public static void setSlowDisplay(boolean mode){
+    	SmartDashboard.putString(SLOW_DISPLAY_KEY, mode ? "slow" : "not slow");
+    }
 }
