@@ -66,7 +66,8 @@ public class OI {
 
     public static void toTank() { 
     	SmartDashboard.putBoolean(ARCADE_MODE_KEY, false); 
-    	setArcadeDisplay(false); 
+    	setArcadeDisplay(false);
+    	
     } 
 
     private static void setArcadeDisplay(boolean mode) { 
@@ -104,11 +105,13 @@ public class OI {
     public static void toSlow(){
     	SmartDashboard.putBoolean(SLOW_MODE_KEY, true);
     	setSlowDisplay(true);
+    	toTank();
     }
     
     public static void noSlow(){
     	SmartDashboard.putBoolean(SLOW_MODE_KEY, false);
     	setSlowDisplay(false);
+    	toTank();
     }
     
     public static void setSlowDisplay(boolean mode){
