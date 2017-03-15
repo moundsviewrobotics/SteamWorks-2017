@@ -30,6 +30,30 @@ public class DriveSubsystem extends Subsystem {
     	drive.tankDrive(OI.stick.getY() *.8, OI.stick2.getY()*.8); 
     	
     }
+    public void slowTank(){
+    	drive.tankDrive(OI.stick.getY() * .35
+    			+ OI.stick.getX() * OI.stick.getX()
+    			* OI.stick.getY() * .65,
+    			OI.stick2.getY() * .35
+    			+ OI.stick2.getX() * OI.stick2.getX()
+    			* OI.stick2.getY() * .65);
+    }
+    public void reverseArcade(){
+    	drive.arcadeDrive(- OI.stick.getY(), -OI.stick.getX());
+    }
+    public void reverseTank(){
+    	drive.tankDrive(-OI.stick2.getY(), -OI.stick.getY());
+    }
+    public void reverseSlow(){
+    	drive.tankDrive(
+    			-OI.stick2.getY() * .35
+    			- OI.stick2.getX() * OI.stick2.getX()
+    			* OI.stick2.getY() * .65,
+    			- OI.stick.getY() * .35
+    			- OI.stick.getX() * OI.stick.getX()
+    			* OI.stick.getY() * .65
+    			);
+    }
     
 
     public void driveForward(double speedl, double time) {
