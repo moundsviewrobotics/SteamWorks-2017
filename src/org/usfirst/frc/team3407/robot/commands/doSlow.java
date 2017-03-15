@@ -1,36 +1,34 @@
 package org.usfirst.frc.team3407.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team3407.robot.Robot;
 import org.usfirst.frc.team3407.robot.OI;
+
+import edu.wpi.first.wpilibj.command.Command;
+
+
 /**
  *
  */
-public class doArcade extends Command {
+public class doSlow extends Command {
 
-    public doArcade() {
+    public doSlow() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	OI.toSlow();
+    	OI.toTank();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	OI.toArcade();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-       /* if(!OI.isArcade()){
-        	return false;
-        	
-        }
-        else{
-        	return true;
-        }*/
-    	return false;
+        return false;
     }
 
     // Called once after isFinished returns true

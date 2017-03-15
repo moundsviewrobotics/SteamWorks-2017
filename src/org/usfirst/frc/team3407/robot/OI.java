@@ -54,8 +54,8 @@ public class OI {
     	startFeeder.whenPressed(new StartFeeder());
     	stopFeeder.whenPressed(new StopFeeder());
     	
-    	arcade.whenPressed(new doArcade());
-    	tank.whenPressed(new doTank());
+    	//arcade.whenPressed(new doArcade());
+    	//tank.whenPressed(new doTank());
     	
     	//reverseDrive.whenPressed(new doReverse);
     	//forward.whenPressed(new doForward());
