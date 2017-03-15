@@ -13,7 +13,7 @@ public class AutonomousPos2 extends Command {
 	public boolean mirror;
 
 	public AutonomousPos2(boolean mirror) {
-    	requires(Robot.driveSubsystem);	
+    	requires(Robot.drivetrain);	
     	this.mirror = mirror;
     }
 
@@ -23,20 +23,20 @@ public class AutonomousPos2 extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveSubsystem.driveForward(0.5, 1);
-    	Robot.driveSubsystem.driveForward(0.5, 0.5);
+    	Robot.drivetrain.driveForward(0.5, 1);
+    	Robot.drivetrain.driveForward(0.5, 0.5);
     	if(mirror){
-    		Robot.driveSubsystem.turnLeft(1, 1);
-    		Robot.driveSubsystem.driveForward(0.7, 1);
-    		Robot.driveSubsystem.turnRight(1, 1);
+    		Robot.drivetrain.turnLeft(1, 1);
+    		Robot.drivetrain.driveForward(0.7, 1);
+    		Robot.drivetrain.turnRight(1, 1);
     	}
     	else {
-    		Robot.driveSubsystem.turnRight(1, 1);
-    		Robot.driveSubsystem.driveForward(0.7, 1);
-    		Robot.driveSubsystem.turnLeft(1, 1);
+    		Robot.drivetrain.turnRight(1, 1);
+    		Robot.drivetrain.driveForward(0.7, 1);
+    		Robot.drivetrain.turnLeft(1, 1);
     	}
-    	Robot.driveSubsystem.driveForward(0.7, 1.1);
-    	Robot.driveSubsystem.turnRight(1, 2);
+    	Robot.drivetrain.driveForward(0.7, 1.1);
+    	Robot.drivetrain.turnRight(1, 2);
     	loader.shoot();
     	Timer.delay(4);
     	loader.stopShooting();

@@ -1,6 +1,6 @@
 package org.usfirst.frc.team3407.robot;
 
-import org.usfirst.frc.team3407.robot.subsystems.DriveSubsystem;
+import org.usfirst.frc.team3407.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team3407.robot.subsystems.Feeder;
 import org.usfirst.frc.team3407.robot.subsystems.loader;
 //import org.usfirst.frc.team3407.robot.subsystems.linearSlide;
@@ -29,7 +29,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 	
 	public static OI oi;
-	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
+	public static Drivetrain drivetrain = new Drivetrain();
 	public static loader ballLoader = new loader();
 	//public static linearSlide slide = new linearSlide();
 	public static shooterPID shooterpid = new shooterPID();

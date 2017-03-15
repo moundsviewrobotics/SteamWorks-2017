@@ -2,7 +2,7 @@ package org.usfirst.frc.team3407.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team3407.robot.*;
-import org.usfirst.frc.team3407.robot.subsystems.DriveSubsystem;
+import org.usfirst.frc.team3407.robot.subsystems.Drivetrain;
 
 /**
  *
@@ -12,7 +12,7 @@ public class DriveCommand extends Command {
     public DriveCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.driveSubsystem);
+    	requires(Robot.drivetrain);
     }
 
     // Called just before this Command runs the first time
@@ -23,10 +23,29 @@ public class DriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(OI.isArcade()) {
-    			Robot.driveSubsystem.arcadeDrive();
+    		if(!OI.isReverse()){
+    			Robot.drivetrain.arcadeDrive();
+    		} else{
+    			Robot.drivetrain.reverseArcade();
+    		}
     	}
     	else {
-    			Robot.driveSubsystem.tankDrive();
+    		if(!OI.isTankSlow()){
+    			if(!OI.isReverse()){
+    			    Robot.drivetrain.tankDrive();
+    			}
+    			else{
+    				Robot.drivetrain.reverseTank();
+    			}
+    		}
+    		else{
+    			if(!OI.isReverse()){
+    				Robot.drivetrain.slowTank();
+    			}
+    			else{
+    				Robot.drivetrain.reverseSlow();
+    			}
+    		}
     	}
     }
 
@@ -37,7 +56,7 @@ public class DriveCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	((DriveSubsystem) Robot.driveSubsystem).stop();
+    	((Drivetrain) Robot.drivetrain).stop();
     }
 
     // Called when another command which requires one or more of the same

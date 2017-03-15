@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutonomousPos1 extends Command {
 
     public AutonomousPos1(boolean mirror) {
-    	requires(Robot.driveSubsystem);	
+    	requires(Robot.drivetrain);	
     	this.mirror = mirror;
     }
     private boolean mirror;
@@ -22,12 +22,12 @@ public class AutonomousPos1 extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveSubsystem.driveForward(0.7, 1.2);
+    	Robot.drivetrain.driveForward(0.7, 1.2);
     	if(mirror) {
-    		Robot.driveSubsystem.turnLeft(1, 1);
+    		Robot.drivetrain.turnLeft(1, 1);
     	}
     	else {
-    		Robot.driveSubsystem.turnRight(1, 1);
+    		Robot.drivetrain.turnRight(1, 1);
     	}
     	Timer.delay(5);
     	loader.shoot();

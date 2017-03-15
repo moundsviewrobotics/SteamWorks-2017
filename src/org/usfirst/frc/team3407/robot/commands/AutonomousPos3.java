@@ -22,8 +22,8 @@ public class AutonomousPos3 extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveSubsystem.driveForward(1, 1.2);
-    	Robot.driveSubsystem.turnRight(1, 1.9);
+    	Robot.drivetrain.driveForward(1, 1.2);
+    	Robot.drivetrain.turnRight(1, 1.9);
     	Timer.delay(3.5);
     	loader.shoot();
     	Timer.delay(8);

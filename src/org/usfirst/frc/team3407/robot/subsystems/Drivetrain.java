@@ -8,11 +8,11 @@ import org.usfirst.frc.team3407.robot.commands.DriveCommand;
 /**
  *
  */
-public class DriveSubsystem extends Subsystem {
+public class Drivetrain extends Subsystem {
     
 	private RobotDrive drive;
 	
-	public DriveSubsystem() {
+	public Drivetrain() {
 		drive = new RobotDrive(0, 1, 2, 3);
 		drive.setSafetyEnabled(false);
 		drive.setSensitivity(0.75);
