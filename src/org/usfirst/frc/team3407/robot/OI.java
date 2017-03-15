@@ -38,6 +38,11 @@ public class OI {
 	public static JoystickButton stopShooting = new JoystickButton(stick, 6);
 	
 	public static JoystickButton reverseDrive = new JoystickButton(stick2, 1);
+	public static JoystickButton forward = new JoystickButton(stick2, 2);
+	public static JoystickButton arcade = new JoystickButton(stick2, 3);
+	public static JoystickButton tank = new JoystickButton(stick2, 4);
+	public static JoystickButton noSlow = new JoystickButton(stick2, 5);
+	public static JoystickButton slow = new JoystickButton(stick2, 6);
 	
     static {
     	loadingButton.whenActive(new startLoading());

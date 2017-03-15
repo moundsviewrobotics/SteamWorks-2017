@@ -121,6 +121,7 @@ public class Robot extends IterativeRobot {
     public void teleopInit() {
     	Feeder.start();
     	shooterpid.setMotorSpeed(0.8);
+    	//shooterpid.setSetpoint(1300);
     	shooterpid.enable();
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
@@ -151,7 +152,7 @@ public class Robot extends IterativeRobot {
     	
     	Object target = visionProcessor.getTargetEvaluator().getTargetCenter();
         SmartDashboard.putString("DB/String 0", (target == null) ? "<None>" : target.toString());
-;
+        
         LiveWindow.run();
     }
 }
