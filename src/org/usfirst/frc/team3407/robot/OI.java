@@ -53,6 +53,15 @@ public class OI {
     	
     	startFeeder.whenPressed(new StartFeeder());
     	stopFeeder.whenPressed(new StopFeeder());
+    	
+    	//arcade.whenPressed(new doArcade());
+    	//tank.whenPressed(new doTank());
+    	
+    	//reverseDrive.whenPressed(new doReverse);
+    	//forward.whenPressed(new doForward());
+    	
+    	//slow.whenPressed(new doSlow());
+    	//noSlow.whenPressed(new doNoSlow());
  
     	
     	toTank(); 
@@ -110,13 +119,13 @@ public class OI {
     public static void toSlow(){
     	SmartDashboard.putBoolean(SLOW_MODE_KEY, true);
     	setSlowDisplay(true);
-    	toTank();
+    	//toTank();
     }
     
     public static void noSlow(){
     	SmartDashboard.putBoolean(SLOW_MODE_KEY, false);
     	setSlowDisplay(false);
-    	toTank();
+    	//toTank();
     }
     
     public static void setSlowDisplay(boolean mode){
