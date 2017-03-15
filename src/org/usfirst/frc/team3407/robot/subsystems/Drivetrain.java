@@ -13,7 +13,7 @@ public class Drivetrain extends Subsystem {
 	private RobotDrive drive;
 	
 	public Drivetrain() {
-		drive = new RobotDrive(0, 1, 2, 3);
+		drive = new RobotDrive(0, 1/*, 2, 3*/);
 		drive.setSafetyEnabled(false);
 		drive.setSensitivity(0.75);
 	}
@@ -30,6 +30,7 @@ public class Drivetrain extends Subsystem {
     	drive.tankDrive(OI.stick.getY() *.8, OI.stick2.getY()*.8); 
     	
     }
+    
     public void slowTank(){
     	drive.tankDrive(OI.stick.getY() * .35
     			+ OI.stick.getX() * OI.stick.getX()
@@ -38,12 +39,15 @@ public class Drivetrain extends Subsystem {
     			+ OI.stick2.getX() * OI.stick2.getX()
     			* OI.stick2.getY() * .65);
     }
+    
     public void reverseArcade(){
     	drive.arcadeDrive(- OI.stick.getY(), -OI.stick.getX());
     }
+    
     public void reverseTank(){
     	drive.tankDrive(-OI.stick2.getY(), -OI.stick.getY());
     }
+    
     public void reverseSlow(){
     	drive.tankDrive(
     			-OI.stick2.getY() * .35

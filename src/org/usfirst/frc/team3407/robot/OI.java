@@ -15,7 +15,7 @@ import org.usfirst.frc.team3407.robot.commands.*;
 public class OI {
 	
 	private static final String ARCADE_MODE_KEY = "DB/Button 1";
-	private static final String ARCADE_DISPLAY_KEY = "DB/String 2";
+	private static final String ARCADE_DISPLAY_KEY = "DB/String 1";
 	
 	public static final String REVERSE_MODE_KEY = "DB/Button 2";
 	public static final String REVERSE_DISPLAY_KEY = "DB/String 2";
