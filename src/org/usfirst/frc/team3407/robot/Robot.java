@@ -139,9 +139,9 @@ public class Robot extends IterativeRobot {
     }
     
     public void testInit() {
-    	shooterpid.setMotorSpeed(.8);
-    	shooterpid.setSetpoint(1500);
-        
+    	shooterpid.setMotorSpeed(.5);
+    	shooterpid.setSetpoint(900);
+        loader.shoot();
         visionProcessor.start(camera);
     }
     

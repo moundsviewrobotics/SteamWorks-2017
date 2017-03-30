@@ -21,10 +21,10 @@ public class shooterPID extends PIDSubsystem {
 	private VictorSP shooterVictor = new VictorSP(5);
 	private Encoder encoder = new Encoder(2 /* Channel A */, 1 /* Channel B */);
 	
-	public static final String SETPOINT_KEY = "DB/Slider0";
-	public static final String P_KEY = "DB/Slider1";
-	public static final String I_KEY = "DB/Slider2";
-	public static final String D_KEY = "DB/Slider3";
+	//public static final String SETPOINT_KEY = "DB/Slider0";
+	//public static final String P_KEY = "DB/Slider1";
+	//public static final String I_KEY = "DB/Slider2";
+	//public static final String D_KEY = "DB/Slider3";
 	
 	//SmartDashboard.setDefaultNumber(SETPOINT_KEY, 1250);
 	//SmartDashboard.setDefaultNumber(SETPOINT_KEY, 1250);
@@ -40,10 +40,11 @@ public class shooterPID extends PIDSubsystem {
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-    	super("shooterPID", SmartDashboard.getNumber(P_KEY, .0015) , SmartDashboard.getNumber(I_KEY, 0.0002), SmartDashboard.getNumber(D_KEY, .0015));
+    	super("shooterPID", /*SmartDashboard.getNumber(P_KEY, .0015) , SmartDashboard.getNumber(I_KEY, 0.0002), SmartDashboard.getNumber(D_KEY, .0015)*/ 0.015, 0.0002, 0.015);
     	
-    	setSetpoint(SmartDashboard.getNumber(SETPOINT_KEY, 1250));
-		
+    	//setSetpoint(SmartDashboard.getNumber(SETPOINT_KEY, 1250));
+		setSetpoint(1100);
+    	
     	setAbsoluteTolerance(100);
     	PIDController controller = getPIDController();
        	controller.setContinuous(false);
@@ -72,7 +73,7 @@ public class shooterPID extends PIDSubsystem {
     
     protected double returnPIDInput() {
     	double rate = encoder.getRate();
-    	SmartDashboard.putString("DB/String 1", Double.toString(rate));
+    	SmartDashboard.putString("DB/String 6", Double.toString(rate));
         return rate;
     }
 
