@@ -40,7 +40,8 @@ public class Robot extends IterativeRobot {
 	private static final String SOFTWARE_VERSION = "Steamworks-2017-1.0";
 	private static final String SOFTWARE_DATE = "DATE(02/21/17)";
     Command autonomousCommand;
-
+    
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -119,10 +120,10 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
-    	Feeder.start();
-    	shooterpid.setMotorSpeed(0.8);
+    	//Feeder.start();
+    	//shooterpid.setMotorSpeed(0.8);
     	//shooterpid.setSetpoint(1300);
-    	shooterpid.enable();
+    	//shooterpid.enable();
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
@@ -138,8 +139,8 @@ public class Robot extends IterativeRobot {
     }
     
     public void testInit() {
-    	//shooterpid.setMotorSpeed(.80);
-    	//shooterpid.setSetpoint(1500);
+    	shooterpid.setMotorSpeed(.8);
+    	shooterpid.setSetpoint(1500);
         
         visionProcessor.start(camera);
     }

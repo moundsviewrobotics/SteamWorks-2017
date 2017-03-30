@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow ;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.VictorSP;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
@@ -21,6 +21,16 @@ public class shooterPID extends PIDSubsystem {
 	private VictorSP shooterVictor = new VictorSP(5);
 	private Encoder encoder = new Encoder(2 /* Channel A */, 1 /* Channel B */);
 	
+	public static final String SETPOINT_KEY = "DB/Slider0";
+	public static final String P_KEY = "DB/Slider1";
+	public static final String I_KEY = "DB/Slider2";
+	public static final String D_KEY = "DB/Slider3";
+	
+	//SmartDashboard.setDefaultNumber(SETPOINT_KEY, 1250);
+	//SmartDashboard.setDefaultNumber(SETPOINT_KEY, 1250);
+	//SmartDashboard.setDefaultNumber(SETPOINT_KEY, 1250);
+	//SmartDashboard.setDefaultNumber(SETPOINT_KEY, 1250);
+	
 	private double speed;
 	
     // Initialize your subsystem here
@@ -30,9 +40,9 @@ public class shooterPID extends PIDSubsystem {
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-    	super("shooterPID", 0.0001, 0.00, 0.0005);
+    	super("shooterPID", SmartDashboard.getNumber(P_KEY, .0015) , SmartDashboard.getNumber(I_KEY, 0.0002), SmartDashboard.getNumber(D_KEY, .0015));
     	
-    	setSetpoint(DEFAULT_SET_POINT);
+    	setSetpoint(SmartDashboard.getNumber(SETPOINT_KEY, 1250));
 		
     	setAbsoluteTolerance(100);
     	PIDController controller = getPIDController();
@@ -62,7 +72,7 @@ public class shooterPID extends PIDSubsystem {
     
     protected double returnPIDInput() {
     	double rate = encoder.getRate();
-    	SmartDashboard.putString("DB/String 3", Double.toString(rate));
+    	SmartDashboard.putString("DB/String 1", Double.toString(rate));
         return rate;
     }
 

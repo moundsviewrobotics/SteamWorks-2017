@@ -13,7 +13,7 @@ public class Drivetrain extends Subsystem {
 	private RobotDrive drive;
 	
 	public Drivetrain() {
-		drive = new RobotDrive(0, 1/*, 2, 3*/);
+		drive = new RobotDrive(0, 1, 2, 3);
 		drive.setSafetyEnabled(false);
 		drive.setSensitivity(0.75);
 	}

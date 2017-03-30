@@ -22,7 +22,7 @@ public class DriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(OI.isArcade()) {
+    	if(false) {
     		if(!OI.isReverse()){
     			Robot.drivetrain.arcadeDrive();
     		} else{

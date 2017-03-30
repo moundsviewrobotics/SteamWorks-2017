@@ -14,8 +14,8 @@ import org.usfirst.frc.team3407.robot.commands.*;
 
 public class OI {
 	
-	private static final String ARCADE_MODE_KEY = "DB/Button 1";
-	private static final String ARCADE_DISPLAY_KEY = "DB/String 1";
+	//private static final String ARCADE_MODE_KEY = "DB/Button 1";
+	//private static final String ARCADE_DISPLAY_KEY = "DB/String 1";
 	
 	public static final String REVERSE_MODE_KEY = "DB/Button 2";
 	public static final String REVERSE_DISPLAY_KEY = "DB/String 2";
@@ -64,10 +64,10 @@ public class OI {
     	//noSlow.whenPressed(new doNoSlow());
  
     	
-    	toTank(); 
+    	//toTank(); 
     }
 
-    public static boolean isArcade() { 
+    /*public static boolean isArcade() { 
     	boolean value = SmartDashboard.getBoolean(ARCADE_MODE_KEY,  true); 
     	setArcadeDisplay(value); 
     	return value; 
@@ -87,7 +87,7 @@ public class OI {
     private static void setArcadeDisplay(boolean mode) { 
     	SmartDashboard.putString(ARCADE_DISPLAY_KEY,  (mode ? "Arcade" : "Tank") + " Drive Mode");    	 
     } 
-    
+    */
     
     public static boolean isReverse() {
     	boolean reverse = SmartDashboard.getBoolean(REVERSE_MODE_KEY, false);

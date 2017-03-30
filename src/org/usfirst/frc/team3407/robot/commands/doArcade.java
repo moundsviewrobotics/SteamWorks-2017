@@ -14,11 +14,12 @@ public class doArcade extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	//OI.toArcade();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	OI.toArcade();
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -30,7 +31,7 @@ public class doArcade extends Command {
         else{
         	return true;
         }*/
-    	return false;
+    	return true;
     }
 
     // Called once after isFinished returns true

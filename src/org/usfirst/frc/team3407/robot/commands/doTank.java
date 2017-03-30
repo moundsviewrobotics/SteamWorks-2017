@@ -15,12 +15,13 @@ public class doTank extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	//OI.toTank();
+    	OI.noSlow();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	OI.toTank();
-    	OI.noSlow();
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -30,7 +31,7 @@ public class doTank extends Command {
     	}
     	else{
     		return false;
-    	}//*/ return false;
+    	}//*/ return true;
     }
 
     // Called once after isFinished returns true
