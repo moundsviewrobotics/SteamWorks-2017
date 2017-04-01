@@ -14,7 +14,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class shooterPID extends PIDSubsystem {
 	
-	public static final double DEFAULT_SET_POINT = 1200;
+	public static final double INITIAL_MOTOR_SPEED = 0.8;
+	public static final double DEFAULT_SET_POINT = 1350;
 	
 	//private static final double MAX_RATE = 1800;
 	
@@ -36,11 +37,12 @@ public class shooterPID extends PIDSubsystem {
     // Initialize your subsystem here
     public shooterPID() {
     	
+    	
         // Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-    	super("shooterPID", 0.0002, 0.0000, 0.00005);
+    	super("shooterPID", 0.00022, 0.000001, 0.00005);
     	
 		setSetpoint(DEFAULT_SET_POINT);
     	

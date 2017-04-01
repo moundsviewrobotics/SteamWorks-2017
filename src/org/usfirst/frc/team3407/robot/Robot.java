@@ -83,7 +83,7 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         
     	Feeder.start();
-    	shooterpid.setMotorSpeed(.80);
+    	shooterpid.setMotorSpeed(shooterPID.INITIAL_MOTOR_SPEED);
     	shooterpid.enable();
         String selected = SmartDashboard.getString("Auto Selector","A");
         System.out.println("SELECTED=" + selected);
@@ -139,18 +139,21 @@ public class Robot extends IterativeRobot {
     }
     
     public void testInit() {
-    	shooterpid.setMotorSpeed(.7);
-    	shooterpid.setSetpoint(1200);
+    	//shooterpid.setMotorSpeed(shooterPID.INITIAL_MOTOR_SPEED);
+    	//shooterpid.setSetpoint(shooterPID.DEFAULT_SET_POINT);
+    	shooterpid.setMotorSpeed(.75);;
+    	shooterpid.setSetpoint(1350);
     	shooterpid.enable();
         loader.shoot();
         //visionProcessor.start(camera);
     }
     
+    
     /**
      * This function is called periodically during test mode
      */
     public void testPeriodic() {	
-    	//shooterpid.test();
+    	shooterpid.test();
     	
     	//Object target = visionProcessor.getTargetEvaluator().getTargetCenter();
         //SmartDashboard.putString("DB/String 0", (target == null) ? "<None>" : target.toString());
