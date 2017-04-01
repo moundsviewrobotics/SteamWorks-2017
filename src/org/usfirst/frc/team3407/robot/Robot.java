@@ -139,10 +139,11 @@ public class Robot extends IterativeRobot {
     }
     
     public void testInit() {
-    	shooterpid.setMotorSpeed(.5);
-    	shooterpid.setSetpoint(900);
+    	shooterpid.setMotorSpeed(.7);
+    	shooterpid.setSetpoint(1200);
+    	shooterpid.enable();
         loader.shoot();
-        visionProcessor.start(camera);
+        //visionProcessor.start(camera);
     }
     
     /**
@@ -151,8 +152,8 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {	
     	//shooterpid.test();
     	
-    	Object target = visionProcessor.getTargetEvaluator().getTargetCenter();
-        SmartDashboard.putString("DB/String 0", (target == null) ? "<None>" : target.toString());
+    	//Object target = visionProcessor.getTargetEvaluator().getTargetCenter();
+        //SmartDashboard.putString("DB/String 0", (target == null) ? "<None>" : target.toString());
         
         LiveWindow.run();
     }

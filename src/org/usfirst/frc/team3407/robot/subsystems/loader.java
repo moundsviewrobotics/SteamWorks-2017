@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.SpeedController;
  */
 public class loader extends Subsystem {
 	public static SpeedController Agitator = new VictorSP(7); //note: wrong port
-	public static SpeedController loadShooter = new VictorSP(4);
+	public static SpeedController loadShooter = new VictorSP(9);
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

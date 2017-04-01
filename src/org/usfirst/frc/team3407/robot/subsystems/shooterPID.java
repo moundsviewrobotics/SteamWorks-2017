@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class shooterPID extends PIDSubsystem {
 	
-	public static final double DEFAULT_SET_POINT = 1500;
+	public static final double DEFAULT_SET_POINT = 1200;
 	
 	//private static final double MAX_RATE = 1800;
 	
@@ -40,10 +40,9 @@ public class shooterPID extends PIDSubsystem {
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-    	super("shooterPID", /*SmartDashboard.getNumber(P_KEY, .0015) , SmartDashboard.getNumber(I_KEY, 0.0002), SmartDashboard.getNumber(D_KEY, .0015)*/ 0.015, 0.0002, 0.015);
+    	super("shooterPID", 0.0002, 0.0000, 0.00005);
     	
-    	//setSetpoint(SmartDashboard.getNumber(SETPOINT_KEY, 1250));
-		setSetpoint(1100);
+		setSetpoint(DEFAULT_SET_POINT);
     	
     	setAbsoluteTolerance(100);
     	PIDController controller = getPIDController();
@@ -65,22 +64,22 @@ public class shooterPID extends PIDSubsystem {
     }
     
     public void test() {
-    	LiveWindow.addActuator("Shooter", "Motor", shooterVictor);
-    	LiveWindow.addSensor("Shooter", "Encoder", encoder);
-    	LiveWindow.addActuator("Shooter", "PID", getPIDController());
-    	//SmartDashboard.putString("DB/String 8", Double.toString(encoder.getRate()));
+    	double speed = Double.parseDouble(SmartDashboard.getString("DB/String 2", "0.7"));
+    	setMotorSpeed(speed);
+    	SmartDashboard.putString("DB/String 7", Double.toString(encoder.getRate()));
+    	SmartDashboard.putString("DB/String 9", Double.toString(speed));
     }
     
     protected double returnPIDInput() {
     	double rate = encoder.getRate();
-    	SmartDashboard.putString("DB/String 6", Double.toString(rate));
+    	SmartDashboard.putString("DB/String 7", Double.toString(rate));
         return rate;
     }
 
     protected void usePIDOutput(double output) {
     	double speedAdjust = output;
-     	SmartDashboard.putString("DB/String 4", Double.toString(output));
-    	SmartDashboard.putString("DB/String 7", Double.toString(getPIDController().getAvgError()));
+     	SmartDashboard.putString("DB/String 6", Double.toString(output));
+    	SmartDashboard.putString("DB/String 8", Double.toString(getPIDController().getAvgError()));
     	SmartDashboard.putString("DB/String 9", Double.toString(speed));
     	setMotorSpeed(speed + speedAdjust);  	
     }
