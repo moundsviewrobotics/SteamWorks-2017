@@ -20,7 +20,7 @@ public class shooterPID extends PIDSubsystem {
 	public static final double INITIAL_MOTOR_SPEED = 0.8;
 	public static final double DEFAULT_SET_POINT = 1350;
 
-	private static final boolean DEBUG_ENABLE = true;
+	private static final boolean DEBUG_ENABLE = false;
 	private static final long DEBUG_INTERVAL = 10;
 
 	// private static final double MAX_RATE = 1800;

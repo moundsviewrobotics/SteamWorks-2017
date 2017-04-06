@@ -29,11 +29,15 @@ public class AutonomousPos2 extends Command {
     		Robot.drivetrain.turnLeft(1, 1);
     		Robot.drivetrain.driveForward(0.7, 1);
     		Robot.drivetrain.turnRight(1, 1);
+    		Robot.drivetrain.driveForward(0.7, 1.1);
+    		Robot.drivetrain.turnLeft(1, 1.9);
     	}
     	else {
     		Robot.drivetrain.turnRight(1, 1);
     		Robot.drivetrain.driveForward(0.7, 1);
     		Robot.drivetrain.turnLeft(1, 1);
+    		Robot.drivetrain.driveForward(0.7, 1.1);
+    		Robot.drivetrain.turnRight(1, 1.9);
     	}
     	Robot.drivetrain.driveForward(0.7, 1.1);
     	Robot.drivetrain.turnRight(1, 2);

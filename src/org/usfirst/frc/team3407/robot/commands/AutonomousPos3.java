@@ -11,9 +11,13 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutonomousPos3 extends Command {
 
-    public AutonomousPos3() {
+    public boolean mirror;
+
+	public AutonomousPos3(boolean mirror) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.drivetrain);	
+    	this.mirror = mirror;
     }
 
     // Called just before this Command runs the first time
@@ -23,7 +27,12 @@ public class AutonomousPos3 extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.drivetrain.driveForward(1, 1.2);
-    	Robot.drivetrain.turnRight(1, 1.9);
+    	if(mirror){
+    		Robot.drivetrain.turnRight(1, 1.9);
+    	}
+    	else {
+    		Robot.drivetrain.turnRight(1, 1.9);
+    	}
     	Timer.delay(3.5);
     	loader.shoot();
     	Timer.delay(8);

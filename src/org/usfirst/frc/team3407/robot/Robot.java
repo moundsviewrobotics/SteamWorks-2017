@@ -5,6 +5,7 @@ import org.usfirst.frc.team3407.robot.subsystems.Feeder;
 import org.usfirst.frc.team3407.robot.subsystems.loader;
 //import org.usfirst.frc.team3407.robot.subsystems.linearSlide;
 import org.usfirst.frc.team3407.robot.subsystems.shooterPID;
+import org.usfirst.frc.team3407.robot.subsystems.climber;
 import org.usfirst.frc.team3407.robot.vision.VisionProcessor;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPos1;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPos2;
@@ -19,6 +20,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -31,6 +33,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Drivetrain drivetrain = new Drivetrain();
 	public static loader ballLoader = new loader();
+	public static climber climber = new climber();
 	//public static linearSlide slide = new linearSlide();
 	public static shooterPID shooterpid = new shooterPID();
 	
@@ -64,7 +67,7 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-        visionProcessor.stop();
+        //visionProcessor.stop();
     }
 	
 	public void disabledPeriodic() {
@@ -100,30 +103,32 @@ public class Robot extends IterativeRobot {
         else if(selected .equals("pos2R")){
         	autonomousCommand = new AutonomousPos2(false);
         }
-        else if(selected .equals("pos3")) {
-        	autonomousCommand = new AutonomousPos3();
+        else if(selected .equals("pos3R")) {
+        	autonomousCommand = new AutonomousPos3(false);
+        }
+        else if(selected .equals("Pos3B")){
+        	autonomousCommand = new AutonomousPos3(true);
         }
         else {
-        	autonomousCommand = new AutonomousPos3();
-        }//TODO: make this a switch statement
-        //note to future teams: don't use sendablechooser	
+        	autonomousCommand = new AutonomousPos3(false);
+        }//TODO: make this a switch statement	
         System.out.println(autonomousCommand);
     	// schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
     /**
-      This function is called periodically during autonomous
+     * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
     }
 
     public void teleopInit() {
-    	//Feeder.start();
-    	//shooterpid.setMotorSpeed(0.8);
-    	//shooterpid.setSetpoint(1300);
-    	//shooterpid.enable();
+    	Feeder.start();
+    	shooterpid.setMotorSpeed(shooterPID.INITIAL_MOTOR_SPEED);
+    	shooterpid.setSetpoint(shooterPID.DEFAULT_SET_POINT);
+    	shooterpid.enable();
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
@@ -146,6 +151,7 @@ public class Robot extends IterativeRobot {
     	shooterpid.enable();
         loader.shoot();
         //visionProcessor.start(camera);
+        
     }
     
     
@@ -158,6 +164,6 @@ public class Robot extends IterativeRobot {
     	//Object target = visionProcessor.getTargetEvaluator().getTargetCenter();
         //SmartDashboard.putString("DB/String 0", (target == null) ? "<None>" : target.toString());
         
-        LiveWindow.run();
+        //LiveWindow.run();
     }
 }

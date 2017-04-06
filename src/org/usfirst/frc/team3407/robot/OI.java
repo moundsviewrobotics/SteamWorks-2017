@@ -39,8 +39,8 @@ public class OI {
 	
 	public static JoystickButton reverseDrive = new JoystickButton(stick2, 1);
 	public static JoystickButton forward = new JoystickButton(stick2, 2);
-	public static JoystickButton arcade = new JoystickButton(stick2, 3);
-	public static JoystickButton tank = new JoystickButton(stick2, 4);
+	public static JoystickButton startClimb = new JoystickButton(stick2, 3);
+	public static JoystickButton stopClimb = new JoystickButton(stick2, 4);
 	public static JoystickButton noSlow = new JoystickButton(stick2, 5);
 	public static JoystickButton slow = new JoystickButton(stick2, 6);
 	
@@ -54,8 +54,8 @@ public class OI {
     	startFeeder.whenPressed(new StartFeeder());
     	stopFeeder.whenPressed(new StopFeeder());
     	
-    	//arcade.whenPressed(new doArcade());
-    	//tank.whenPressed(new doTank());
+    	startClimb.whenPressed(new startClimb());
+    	stopClimb.whenPressed(new stopClimb());
     	
     	//reverseDrive.whenPressed(new doReverse);
     	//forward.whenPressed(new doForward());
