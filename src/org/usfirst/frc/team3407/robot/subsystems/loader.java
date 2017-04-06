@@ -23,7 +23,7 @@ public class loader extends Subsystem {
     public static void shoot(){
     	SmartDashboard.putBoolean(OI.LOADER_ENGAGED_KEY, true);    	 
     	loadShooter.set(1);
-    	Agitator.set(1);
+    	Agitator.set(OI.stick.getZ());
     }
     
     public static void stopShooting(){

@@ -5,6 +5,7 @@ import org.usfirst.frc.team3407.robot.subsystems.Feeder;
 import org.usfirst.frc.team3407.robot.subsystems.loader;
 //import org.usfirst.frc.team3407.robot.subsystems.linearSlide;
 import org.usfirst.frc.team3407.robot.subsystems.shooterPID;
+import org.usfirst.frc.team3407.robot.subsystems.climber;
 import org.usfirst.frc.team3407.robot.vision.VisionProcessor;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPos1;
 import org.usfirst.frc.team3407.robot.commands.AutonomousPos2;
@@ -19,6 +20,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -31,6 +33,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Drivetrain drivetrain = new Drivetrain();
 	public static loader ballLoader = new loader();
+	public static climber climber = new climber();
 	//public static linearSlide slide = new linearSlide();
 	public static shooterPID shooterpid = new shooterPID();
 	
@@ -54,7 +57,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData(shooterpid);
         
         CameraServer server = CameraServer.getInstance();
-        camera = server.startAutomaticCapture("Front", 0);        
+        //camera = server.startAutomaticCapture("Front", 0);        
         //server.startAutomaticCapture("Back", 1);
     }
 	
@@ -64,7 +67,7 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-        visionProcessor.stop();
+        //visionProcessor.stop();
     }
 	
 	public void disabledPeriodic() {
@@ -146,6 +149,7 @@ public class Robot extends IterativeRobot {
     	shooterpid.enable();
         loader.shoot();
         //visionProcessor.start(camera);
+        
     }
     
     
@@ -158,6 +162,6 @@ public class Robot extends IterativeRobot {
     	//Object target = visionProcessor.getTargetEvaluator().getTargetCenter();
         //SmartDashboard.putString("DB/String 0", (target == null) ? "<None>" : target.toString());
         
-        LiveWindow.run();
+        //LiveWindow.run();
     }
 }
