@@ -31,18 +31,17 @@ public class OI {
 	public static Joystick stick2 = new Joystick(1);
 	
 	public static JoystickButton loadingButton = new JoystickButton(stick, 1);
-	public static JoystickButton startFeeder = new JoystickButton(stick, 3);
-	public static JoystickButton stopFeeder = new JoystickButton(stick, 4);
+	public static JoystickButton climb = new JoystickButton(stick2, 1);
+	public static JoystickButton startFeeder = new JoystickButton(stick2, 3);
+	public static JoystickButton stopFeeder = new JoystickButton(stick2, 4);
 
 	public static JoystickButton startShooting = new JoystickButton(stick, 5);
 	public static JoystickButton stopShooting = new JoystickButton(stick, 6);
 	
-	public static JoystickButton reverseDrive = new JoystickButton(stick2, 1);
-	public static JoystickButton forward = new JoystickButton(stick2, 2);
-	public static JoystickButton startClimb = new JoystickButton(stick2, 3);
-	public static JoystickButton stopClimb = new JoystickButton(stick2, 4);
-	public static JoystickButton noSlow = new JoystickButton(stick2, 5);
-	public static JoystickButton slow = new JoystickButton(stick2, 6);
+	//public static JoystickButton reverseDrive = new JoystickButton(stick2, 1);
+	//public static JoystickButton forward = new JoystickButton(stick2, 2);
+	//public static JoystickButton noSlow = new JoystickButton(stick2, 5);
+	//public static JoystickButton slow = new JoystickButton(stick2, 6);
 	
     static {
     	loadingButton.whenActive(new startLoading());
@@ -54,8 +53,8 @@ public class OI {
     	startFeeder.whenPressed(new StartFeeder());
     	stopFeeder.whenPressed(new StopFeeder());
     	
-    	startClimb.whenPressed(new startClimb());
-    	stopClimb.whenPressed(new stopClimb());
+    	climb.whenActive(new startClimb());
+    	climb.whenInactive(new stopClimb());
     	
     	//reverseDrive.whenPressed(new doReverse);
     	//forward.whenPressed(new doForward());

@@ -22,14 +22,13 @@ public class DriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(false) {
+    	/*if(false) {
     		if(!OI.isReverse()){
     			Robot.drivetrain.arcadeDrive();
     		} else{
     			Robot.drivetrain.reverseArcade();
     		}
-    	}
-    	else {
+    	} */
     		if(!OI.isTankSlow()){
     			if(!OI.isReverse()){
     			    Robot.drivetrain.tankDrive();
@@ -47,7 +46,6 @@ public class DriveCommand extends Command {
     			}
     		}
     	}
-    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

@@ -1,9 +1,11 @@
 package org.usfirst.frc.team3407.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team3407.robot.OI;
 import org.usfirst.frc.team3407.robot.Robot;
+import org.usfirst.frc.team3407.robot.subsystems.shooterPID;
 
 public class ShooterAdjustSetPointCommand extends Command {
 
@@ -25,10 +27,20 @@ public class ShooterAdjustSetPointCommand extends Command {
 	    protected void execute() {
 	    	double currentPoint = OI.stick.getZ();
 	    	double adjust = (currentPoint - initialCenterPoint) * RANGE;
+	    	System.out.println("shooter adjust current: " + currentPoint);
+	    	if (!Robot.shooterpid.getPIDController().isEnabled()) {
+	    		double rate = Robot.shooterpid.getRate();
+	    		SmartDashboard.putString("DB/String 7", Double.toString(rate));
+	    	}
 	    	if(adjust != 0) {
-	    		System.out.println("Adjusting shooter setpoint: " + adjust);
-	    		double currentSetPoint = Robot.shooterpid.getSetpoint();
-	    		Robot.shooterpid.setSetpoint(currentSetPoint + adjust);
+		    	if (Robot.shooterpid.getPIDController().isEnabled()) {
+		    		System.out.println("Adjusting shooter setpoint: " + (adjust * RANGE));
+		    		Robot.shooterpid.setSetpoint(shooterPID.INITIAL_MOTOR_SPEED + (adjust * RANGE));
+		    	}
+		    	else {
+		    		System.out.println("Adjusting shooter speed: " + adjust);
+		    		Robot.shooterpid.setMotorSpeed(shooterPID.INITIAL_MOTOR_SPEED + adjust);		    	
+		    	}
 	    	}
 	    }
 

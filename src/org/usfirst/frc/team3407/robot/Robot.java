@@ -87,7 +87,7 @@ public class Robot extends IterativeRobot {
         
     	Feeder.start();
     	shooterpid.setMotorSpeed(shooterPID.INITIAL_MOTOR_SPEED);
-    	shooterpid.enable();
+    	//shooterpid.enable();
         String selected = SmartDashboard.getString("Auto Selector","A");
         System.out.println("SELECTED=" + selected);
         
@@ -126,9 +126,11 @@ public class Robot extends IterativeRobot {
 
     public void teleopInit() {
     	Feeder.start();
+    	loader.Agitator.set(1.0);
     	shooterpid.setMotorSpeed(shooterPID.INITIAL_MOTOR_SPEED);
     	shooterpid.setSetpoint(shooterPID.DEFAULT_SET_POINT);
-    	shooterpid.enable();
+    	//shooterpid.enable();
+    	
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove

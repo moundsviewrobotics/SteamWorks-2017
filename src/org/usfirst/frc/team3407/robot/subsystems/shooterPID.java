@@ -17,7 +17,7 @@ import org.usfirst.frc.team3407.robot.commands.ShooterAdjustSetPointCommand;
  */
 public class shooterPID extends PIDSubsystem {
 
-	public static final double INITIAL_MOTOR_SPEED = 0.8;
+	public static final double INITIAL_MOTOR_SPEED = 0.9;
 	public static final double DEFAULT_SET_POINT = 1350;
 
 	private static final boolean DEBUG_ENABLE = false;
@@ -54,6 +54,10 @@ public class shooterPID extends PIDSubsystem {
 		setDefaultCommand(new ShooterAdjustSetPointCommand());
 	}
 
+	public double getRate() {
+		return encoder.getRate();
+	}
+	
 	public void setMotorSpeed(double speed) {
 		this.speed = Math.max(0.0, speed);
 		this.speed = Math.min(1, this.speed);
@@ -73,7 +77,13 @@ public class shooterPID extends PIDSubsystem {
 			printDebug(list);
 		} else {
 			// Manual speed adjust and rate feedback
-			double speed = Double.parseDouble(SmartDashboard.getString("DB/String 2", "0.7"));
+			double speed = 0.7;
+			try { 
+				speed = Double.parseDouble(SmartDashboard.getString("DB/String 2", "0.7"));
+			}
+			catch (Exception e) {
+				speed = 0.7;
+			}
 			setMotorSpeed(speed);
 			SmartDashboard.putString("DB/String 7", Double.toString(encoder.getRate()));
 			SmartDashboard.putString("DB/String 9", Double.toString(speed));
