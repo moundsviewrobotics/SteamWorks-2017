@@ -1,7 +1,6 @@
 package org.usfirst.frc.team3407.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -10,6 +9,8 @@ import edu.wpi.first.wpilibj.VictorSP;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import org.usfirst.frc.team3407.robot.commands.ShooterAdjustSetPointCommand;
 
 /**
  *
@@ -53,8 +54,7 @@ public class shooterPID extends PIDSubsystem {
 	}
 
 	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
+		setDefaultCommand(new ShooterAdjustSetPointCommand());
 	}
 
 	public void setMotorSpeed(double speed) {
