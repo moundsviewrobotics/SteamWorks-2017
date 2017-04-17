@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.networktables.*;
 
 
 
@@ -37,8 +38,10 @@ public class Robot extends IterativeRobot {
 	//public static linearSlide slide = new linearSlide();
 	public static shooterPID shooterpid = new shooterPID();
 	
-	private static VisionProcessor visionProcessor = new VisionProcessor();
+	//private static VisionProcessor visionProcessor = new VisionProcessor();
 	private UsbCamera camera;
+	public static NetworkTable rioTable;
+	public String tableKey = "RIO";
 
 	private static final String SOFTWARE_VERSION = "Steamworks-2017-1.0";
 	private static final String SOFTWARE_DATE = "DATE(02/21/17)";
@@ -51,6 +54,10 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI(); 
+		rioTable = NetworkTable.getTable("PI");
+		rioTable.setServerMode();
+		
+		//rioTable.beginTransaction();
         SmartDashboard.putString("DB/String 0", SOFTWARE_VERSION);
         SmartDashboard.putString("DB/String 5", SOFTWARE_DATE); 
 

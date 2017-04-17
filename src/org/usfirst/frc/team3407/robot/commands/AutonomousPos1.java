@@ -23,17 +23,7 @@ public class AutonomousPos1 extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.drivetrain.driveForward(0.7, 1.2);
-    	if(mirror) {
-    		Robot.drivetrain.turnLeft(1, 1);
-    	}
-    	else {
-    		Robot.drivetrain.turnRight(1, 1);
-    	}
-    	Timer.delay(5);
-    	loader.shoot();
-    	Timer.delay(7);
-    	loader.stopShooting();
-    	
+
     	System.out.println("B");
     }
 

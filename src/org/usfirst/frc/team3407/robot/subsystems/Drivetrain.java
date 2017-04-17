@@ -25,6 +25,10 @@ public class Drivetrain extends Subsystem {
     public void arcadeDrive(){
     	drive.arcadeDrive(OI.stick.getY()*.8, -OI.stick.getX()*.8);	
     }
+    
+    public void LRVisionPID(double speed){
+    	drive.arcadeDrive(0.0, speed);
+    }
 
     public void tankDrive(){
     	drive.tankDrive(OI.stick.getY() *.8, OI.stick2.getY()*.8); 

@@ -44,7 +44,7 @@ public class BoilerEvaluator extends TargetEvaluator {
 		return (upper != null);
 	}
 	
-	private boolean validateTarget(Rect upper, Rect lower) {
+	private static boolean validateTarget(Rect upper, Rect lower) {
 	
 		// Check height
 		if(upper.y > lower.y) {
@@ -65,4 +65,43 @@ public class BoilerEvaluator extends TargetEvaluator {
 
 		return matches;
 	}
+	public int evalLR(Rect upper, Rect lower){
+		if (upper.x < 540 && lower.x < 540) {
+			return 1;
+		}
+		else if (upper.x > 740 && lower.x > 740){
+			return 2;
+		}
+		else {
+			return 0;
+		}
+	}
+	//public int 
+	public static int evalLRdist(ArrayList<MatOfPoint> contours){
+
+		int contourCount = contours.size();
+		Rect upper = null;
+		Rect lower = null;
+		for(int i = 0;(i < (contourCount - 1)) && (upper == null);i++) {
+			Rect rectI = Imgproc.boundingRect(contours.get(i));
+			for(int j = (i + 1);j < contourCount;j++) {
+				Rect rectJ = Imgproc.boundingRect(contours.get(j));			
+				if (validateTarget(rectI, rectJ)) {
+					upper = rectI;
+					lower = rectJ;
+					break;
+				}
+				else if (validateTarget(rectJ, rectI)) {
+					upper = rectJ;
+					lower = rectI;
+					break;
+				}
+			}
+		}
+		
+		return (upper.x + lower.x)/2;
+	}
+	
+
+	
 }

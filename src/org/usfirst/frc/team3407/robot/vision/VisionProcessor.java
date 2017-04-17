@@ -47,7 +47,7 @@ public class VisionProcessor {
 		}		
 	}
 	
-	private class Listener implements VisionRunner.Listener<Pipeline> {
+	public class Listener implements VisionRunner.Listener<Pipeline> {
 
 		private int count = 0;
 		private int detectCount = 0;
@@ -64,6 +64,10 @@ public class VisionProcessor {
 			if((count % 50) == 0) {
 				System.out.println(Thread.currentThread().getName() + " Pipeline: count=" + count + " detections=" + detectCount);
 			}
+		}
+		public ArrayList<MatOfPoint> returnOutput(Pipeline pipeline){
+			ArrayList<MatOfPoint> pipelineOutput = pipeline.delegate.filterContoursOutput();
+			return pipelineOutput;
 		}
 	}
 }

@@ -14,15 +14,15 @@ public class climber extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    public static SpeedController climberMotor = new VictorSP(6);
+    public static SpeedController climberMotor = new VictorSP(4);
 	
 	public static void start() {
     	//.putBoolean(OI.FEEDER_ENGAGED_KEY, true);    	 
-		climberMotor.set(.75);
+		climberMotor.set(1);
 	};
 
 	public static void stop() {
-    	SmartDashboard.putBoolean(OI.FEEDER_ENGAGED_KEY, false);    	 
+    	//SmartDashboard.putBoolean(OI.FEEDER_ENGAGED_KEY, false);    	 
 		climberMotor.set(0);
 	};
 	

@@ -39,7 +39,7 @@ public class shooterPID extends PIDSubsystem {
 
 	// Initialize your subsystem here
 	public shooterPID () {
-		super("shooterPID", 0.3/1800, 0.2/1800 , 0.5/1800, KF);
+		super("shooterPID", 0.05/1800, 0.05/1800 , 0.05/1800, KF);
 
 		setSetpoint(DEFAULT_SET_POINT);
 
