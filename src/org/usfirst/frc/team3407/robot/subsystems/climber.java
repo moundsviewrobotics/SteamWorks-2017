@@ -19,7 +19,7 @@ public class climber extends Subsystem {
 	
 	public static void start() {
     	//.putBoolean(OI.FEEDER_ENGAGED_KEY, true);    	 
-		climberMotor.set(.9);
+		climberMotor.set(1);
 		Robot.shooterpid.setMotorSpeed(0.0);
 	};
 
