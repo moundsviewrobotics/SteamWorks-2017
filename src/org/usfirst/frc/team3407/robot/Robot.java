@@ -91,7 +91,7 @@ public class Robot extends IterativeRobot {
         String selected = SmartDashboard.getString("Auto Selector","A");
         System.out.println("SELECTED=" + selected);
         
-        if(selected .equals("pos1B")) {
+        /*if(selected .equals("pos1B")) {
         	autonomousCommand = new AutonomousPos1(true);
         }
         else if(selected .equals("pos1R")){
@@ -111,7 +111,30 @@ public class Robot extends IterativeRobot {
         }
         else {
         	autonomousCommand = new AutonomousPos3(false);
-        }//TODO: make this a switch statement	
+        }//TODO: make this a switch statement	*/
+        switch (selected){
+        	case "pos1B":
+        		autonomousCommand = new AutonomousPos1(true);
+        		break;
+        	case "pos1R":
+        		autonomousCommand = new AutonomousPos1(false);
+        		break;
+        	case "pos2B":
+        		autonomousCommand = new AutonomousPos2(true);
+        		break;
+        	case "pos2R":
+        		autonomousCommand = new AutonomousPos2(false);
+        		break;
+        	case "pos3B":
+        		autonomousCommand = new AutonomousPos3(true);
+        		break;
+        	case "pos3R":
+        		autonomousCommand = new AutonomousPos3(false);
+        		break;
+        	default:
+        		autonomousCommand = new AutonomousPos3(false);
+      
+        }
         System.out.println(autonomousCommand);
     	// schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
